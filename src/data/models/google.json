@@ -1,0 +1,119 @@
+{
+  "provider": "google",
+  "displayName": "Google",
+  "color": "#4285f4",
+  "website": "https://ai.google.dev",
+  "models": [
+    {
+      "id": "gemini-3-1-pro",
+      "name": "Gemini 3.1 Pro",
+      "status": "active",
+      "contextWindow": 2000000,
+      "releaseDate": "2026-02-20",
+      "description": "Most advanced Gemini model with 2M context window",
+      "pricing": { "input": 1.25, "output": 5.00 },
+      "capabilities": ["text", "vision", "audio", "video", "code", "function-calling"],
+      "changelog": [
+        { "date": "2026-02-20", "type": "release", "description": "Gemini 3.1 Pro released with 2M context and enhanced reasoning" }
+      ]
+    },
+    {
+      "id": "gemini-3-pro",
+      "name": "Gemini 3 Pro",
+      "status": "active",
+      "contextWindow": 2000000,
+      "releaseDate": "2025-12-01",
+      "description": "Major Gemini update with improved multimodal understanding",
+      "pricing": { "input": 1.25, "output": 5.00 },
+      "capabilities": ["text", "vision", "audio", "video", "code", "function-calling"],
+      "changelog": [
+        { "date": "2025-12-01", "type": "release", "description": "Gemini 3 Pro launched with breakthrough multimodal capabilities" }
+      ]
+    },
+    {
+      "id": "gemini-3-flash",
+      "name": "Gemini 3 Flash",
+      "status": "active",
+      "contextWindow": 1000000,
+      "releaseDate": "2025-12-01",
+      "description": "Fast and efficient Gemini model for high-throughput workloads",
+      "pricing": { "input": 0.075, "output": 0.30 },
+      "capabilities": ["text", "vision", "audio", "code", "function-calling"],
+      "changelog": [
+        { "date": "2025-12-01", "type": "release", "description": "Gemini 3 Flash released with significantly improved speed" }
+      ]
+    },
+    {
+      "id": "gemini-2-5-pro",
+      "name": "Gemini 2.5 Pro",
+      "status": "active",
+      "contextWindow": 1000000,
+      "releaseDate": "2025-03-25",
+      "description": "Enhanced Gemini Pro with thinking capabilities and long context",
+      "pricing": { "input": 1.25, "output": 10.00 },
+      "capabilities": ["text", "vision", "audio", "video", "code", "thinking", "function-calling"],
+      "changelog": [
+        { "date": "2025-03-25", "type": "release", "description": "Gemini 2.5 Pro launched with built-in thinking capability" },
+        { "date": "2025-06-01", "type": "update", "description": "Updated to gemini-2.5-pro-preview-06-05 with improved performance" }
+      ]
+    },
+    {
+      "id": "gemini-2-5-flash",
+      "name": "Gemini 2.5 Flash",
+      "status": "active",
+      "contextWindow": 1000000,
+      "releaseDate": "2025-04-17",
+      "description": "Fast thinking model with excellent price-performance ratio",
+      "pricing": { "input": 0.15, "output": 0.60 },
+      "capabilities": ["text", "vision", "audio", "code", "thinking", "function-calling"],
+      "changelog": [
+        { "date": "2025-04-17", "type": "release", "description": "Gemini 2.5 Flash released with thinking capabilities at Flash pricing" }
+      ]
+    },
+    {
+      "id": "gemini-2-0-flash",
+      "name": "Gemini 2.0 Flash",
+      "status": "active",
+      "contextWindow": 1000000,
+      "releaseDate": "2025-02-05",
+      "description": "Fast multimodal model with native tool use and agentic capabilities",
+      "pricing": { "input": 0.10, "output": 0.40 },
+      "capabilities": ["text", "vision", "audio", "code", "function-calling"],
+      "changelog": [
+        { "date": "2024-12-11", "type": "release", "description": "Gemini 2.0 Flash experimental released" },
+        { "date": "2025-02-05", "type": "update", "description": "Gemini 2.0 Flash GA with stable API" }
+      ]
+    },
+    {
+      "id": "gemini-1-5-pro",
+      "name": "Gemini 1.5 Pro",
+      "status": "deprecated",
+      "contextWindow": 2000000,
+      "releaseDate": "2024-02-15",
+      "deprecationDate": "2025-09-01",
+      "description": "Former flagship with pioneering 2M context window",
+      "pricing": { "input": 1.25, "output": 5.00 },
+      "capabilities": ["text", "vision", "audio", "video", "code"],
+      "changelog": [
+        { "date": "2024-02-15", "type": "release", "description": "Gemini 1.5 Pro launched with revolutionary 1M context window" },
+        { "date": "2024-09-24", "type": "update", "description": "Context window expanded to 2M tokens" },
+        { "date": "2025-09-01", "type": "deprecation", "description": "Deprecated in favor of Gemini 2.5+ series" }
+      ]
+    },
+    {
+      "id": "gemini-1-0",
+      "name": "Gemini 1.0",
+      "status": "deprecated",
+      "contextWindow": 32000,
+      "releaseDate": "2023-12-06",
+      "deprecationDate": "2025-02-15",
+      "description": "First Gemini model, replaced by Gemini 1.5 and 2.0 series",
+      "pricing": { "input": 0.50, "output": 1.50 },
+      "capabilities": ["text", "vision"],
+      "changelog": [
+        { "date": "2023-12-06", "type": "release", "description": "Gemini 1.0 launched in Ultra, Pro, and Nano variants" },
+        { "date": "2025-02-15", "type": "deprecation", "description": "All Gemini 1.0 models deprecated" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "provider": "anthropic",
+  "displayName": "Anthropic",
+  "color": "#d97706",
+  "website": "https://anthropic.com",
+  "models": [
+    {
+      "id": "claude-opus-4-6",
+      "name": "Claude Opus 4.6",
+      "status": "active",
+      "contextWindow": 200000,
+      "releaseDate": "2026-03-01",
+      "description": "Most capable Claude model with advanced reasoning and extended thinking",
+      "pricing": { "input": 15.00, "output": 75.00 },
+      "capabilities": ["text", "vision", "extended-thinking", "tool-use", "code"],
+      "changelog": [
+        { "date": "2026-03-01", "type": "release", "description": "Claude Opus 4.6 launched with improved reasoning and coding" }
+      ]
+    },
+    {
+      "id": "claude-opus-4-5",
+      "name": "Claude Opus 4.5",
+      "status": "active",
+      "contextWindow": 200000,
+      "releaseDate": "2026-01-15",
+      "description": "Premium Claude model with enhanced creative and analytical capabilities",
+      "pricing": { "input": 15.00, "output": 75.00 },
+      "capabilities": ["text", "vision", "extended-thinking", "tool-use", "code"],
+      "changelog": [
+        { "date": "2026-01-15", "type": "release", "description": "Claude Opus 4.5 released with improved creative writing" }
+      ]
+    },
+    {
+      "id": "claude-opus-4",
+      "name": "Claude Opus 4",
+      "status": "active",
+      "contextWindow": 200000,
+      "releaseDate": "2025-09-15",
+      "description": "First Claude 4 Opus model with breakthrough capabilities",
+      "pricing": { "input": 15.00, "output": 75.00 },
+      "capabilities": ["text", "vision", "extended-thinking", "tool-use", "code"],
+      "changelog": [
+        { "date": "2025-09-15", "type": "release", "description": "Claude Opus 4 launched as most capable Claude model to date" }
+      ]
+    },
+    {
+      "id": "claude-sonnet-4-6",
+      "name": "Claude Sonnet 4.6",
+      "status": "active",
+      "contextWindow": 200000,
+      "releaseDate": "2026-03-01",
+      "description": "Latest Sonnet model balancing performance with speed and cost",
+      "pricing": { "input": 3.00, "output": 15.00 },
+      "capabilities": ["text", "vision", "extended-thinking", "tool-use", "code"],
+      "changelog": [
+        { "date": "2026-03-01", "type": "release", "description": "Claude Sonnet 4.6 released alongside Opus 4.6" }
+      ]
+    },
+    {
+      "id": "claude-sonnet-4-5",
+      "name": "Claude Sonnet 4.5",
+      "status": "active",
+      "contextWindow": 200000,
+      "releaseDate": "2026-01-15",
+      "description": "High-performance Sonnet model with excellent coding abilities",
+      "pricing": { "input": 3.00, "output": 15.00 },
+      "capabilities": ["text", "vision", "extended-thinking", "tool-use", "code"],
+      "changelog": [
+        { "date": "2026-01-15", "type": "release", "description": "Claude Sonnet 4.5 launched with improved coding performance" }
+      ]
+    },
+    {
+      "id": "claude-sonnet-4",
+      "name": "Claude Sonnet 4",
+      "status": "active",
+      "contextWindow": 200000,
+      "releaseDate": "2025-09-15",
+      "description": "Balanced Claude 4 model for everyday tasks",
+      "pricing": { "input": 3.00, "output": 15.00 },
+      "capabilities": ["text", "vision", "extended-thinking", "tool-use", "code"],
+      "changelog": [
+        { "date": "2025-09-15", "type": "release", "description": "Claude Sonnet 4 launched alongside Opus 4" }
+      ]
+    },
+    {
+      "id": "claude-haiku-4-5",
+      "name": "Claude Haiku 4.5",
+      "status": "active",
+      "contextWindow": 200000,
+      "releaseDate": "2025-11-01",
+      "description": "Fast and affordable Claude model for high-volume tasks",
+      "pricing": { "input": 0.80, "output": 4.00 },
+      "capabilities": ["text", "vision", "tool-use", "code"],
+      "changelog": [
+        { "date": "2025-11-01", "type": "release", "description": "Claude Haiku 4.5 released with improved speed and capability" }
+      ]
+    },
+    {
+      "id": "claude-3-7-sonnet",
+      "name": "Claude 3.7 Sonnet",
+      "status": "active",
+      "contextWindow": 200000,
+      "releaseDate": "2025-02-24",
+      "description": "Hybrid reasoning model with extended thinking capabilities",
+      "pricing": { "input": 3.00, "output": 15.00 },
+      "capabilities": ["text", "vision", "extended-thinking", "tool-use", "code"],
+      "changelog": [
+        { "date": "2025-02-24", "type": "release", "description": "Claude 3.7 Sonnet launched with extended thinking capability" }
+      ]
+    },
+    {
+      "id": "claude-3-5-sonnet",
+      "name": "Claude 3.5 Sonnet",
+      "status": "active",
+      "contextWindow": 200000,
+      "releaseDate": "2024-06-20",
+      "description": "Widely adopted model that set new performance benchmarks",
+      "pricing": { "input": 3.00, "output": 15.00 },
+      "capabilities": ["text", "vision", "tool-use", "code"],
+      "changelog": [
+        { "date": "2024-06-20", "type": "release", "description": "Claude 3.5 Sonnet launched, outperforming Claude 3 Opus" },
+        { "date": "2024-10-22", "type": "update", "description": "Updated Claude 3.5 Sonnet with computer use capability" }
+      ]
+    },
+    {
+      "id": "claude-3-opus",
+      "name": "Claude 3 Opus",
+      "status": "deprecated",
+      "contextWindow": 200000,
+      "releaseDate": "2024-03-04",
+      "deprecationDate": "2025-09-01",
+      "description": "Former flagship model, replaced by Claude 4 series",
+      "pricing": { "input": 15.00, "output": 75.00 },
+      "capabilities": ["text", "vision", "tool-use"],
+      "changelog": [
+        { "date": "2024-03-04", "type": "release", "description": "Claude 3 Opus launched as part of Claude 3 family" },
+        { "date": "2025-09-01", "type": "deprecation", "description": "Deprecated in favor of Claude 4 Opus" }
+      ]
+    },
+    {
+      "id": "claude-3-haiku",
+      "name": "Claude 3 Haiku",
+      "status": "deprecated",
+      "contextWindow": 200000,
+      "releaseDate": "2024-03-14",
+      "deprecationDate": "2025-11-01",
+      "description": "Legacy fast model, replaced by Claude Haiku 4.5",
+      "pricing": { "input": 0.25, "output": 1.25 },
+      "capabilities": ["text", "vision", "tool-use"],
+      "changelog": [
+        { "date": "2024-03-14", "type": "release", "description": "Claude 3 Haiku launched as fastest Claude model" },
+        { "date": "2025-11-01", "type": "deprecation", "description": "Deprecated in favor of Claude Haiku 4.5" }
+      ]
+    }
+  ]
+}

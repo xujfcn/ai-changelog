@@ -1,0 +1,76 @@
+{
+  "provider": "meta",
+  "displayName": "Meta",
+  "color": "#1877f2",
+  "website": "https://ai.meta.com",
+  "models": [
+    {
+      "id": "llama-4-maverick",
+      "name": "Llama 4 Maverick",
+      "status": "active",
+      "contextWindow": 1000000,
+      "releaseDate": "2025-04-05",
+      "description": "400B MoE model with 17 active experts, 1M native context",
+      "pricing": { "input": 0.00, "output": 0.00 },
+      "capabilities": ["text", "vision", "code", "multilingual"],
+      "changelog": [
+        { "date": "2025-04-05", "type": "release", "description": "Llama 4 Maverick released as open-source 400B MoE model" }
+      ]
+    },
+    {
+      "id": "llama-4-scout",
+      "name": "Llama 4 Scout",
+      "status": "active",
+      "contextWindow": 10000000,
+      "releaseDate": "2025-04-05",
+      "description": "109B MoE model with 10M context window, 16 active experts",
+      "pricing": { "input": 0.00, "output": 0.00 },
+      "capabilities": ["text", "vision", "code", "multilingual"],
+      "changelog": [
+        { "date": "2025-04-05", "type": "release", "description": "Llama 4 Scout launched with industry-leading 10M token context" }
+      ]
+    },
+    {
+      "id": "llama-3-3",
+      "name": "Llama 3.3",
+      "status": "active",
+      "contextWindow": 128000,
+      "releaseDate": "2024-12-06",
+      "description": "70B model matching Llama 3.1 405B performance at fraction of compute",
+      "pricing": { "input": 0.00, "output": 0.00 },
+      "capabilities": ["text", "code", "multilingual"],
+      "changelog": [
+        { "date": "2024-12-06", "type": "release", "description": "Llama 3.3 70B released, matching 405B quality at lower cost" }
+      ]
+    },
+    {
+      "id": "llama-3-1",
+      "name": "Llama 3.1",
+      "status": "active",
+      "contextWindow": 128000,
+      "releaseDate": "2024-07-23",
+      "description": "First open-source model to rival GPT-4 class, available in 8B/70B/405B",
+      "pricing": { "input": 0.00, "output": 0.00 },
+      "capabilities": ["text", "code", "multilingual", "function-calling"],
+      "changelog": [
+        { "date": "2024-07-23", "type": "release", "description": "Llama 3.1 released in 8B, 70B, and 405B variants" },
+        { "date": "2024-09-01", "type": "update", "description": "Quantized and distilled variants released by community" }
+      ]
+    },
+    {
+      "id": "llama-2",
+      "name": "Llama 2",
+      "status": "deprecated",
+      "contextWindow": 4096,
+      "releaseDate": "2023-07-18",
+      "deprecationDate": "2024-12-01",
+      "description": "Legacy open-source model, replaced by Llama 3 series",
+      "pricing": { "input": 0.00, "output": 0.00 },
+      "capabilities": ["text"],
+      "changelog": [
+        { "date": "2023-07-18", "type": "release", "description": "Llama 2 released in 7B, 13B, and 70B variants" },
+        { "date": "2024-12-01", "type": "deprecation", "description": "Deprecated — migrate to Llama 3.x series" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "provider": "deepseek",
+  "displayName": "DeepSeek",
+  "color": "#7c3aed",
+  "website": "https://deepseek.com",
+  "models": [
+    {
+      "id": "v3-2",
+      "name": "DeepSeek V3.2",
+      "status": "active",
+      "contextWindow": 128000,
+      "releaseDate": "2026-02-01",
+      "description": "Latest DeepSeek V3 iteration with improved MoE architecture",
+      "pricing": { "input": 0.27, "output": 1.10 },
+      "capabilities": ["text", "code", "function-calling"],
+      "changelog": [
+        { "date": "2026-02-01", "type": "release", "description": "DeepSeek V3.2 released with improved reasoning and efficiency" }
+      ]
+    },
+    {
+      "id": "v3-1",
+      "name": "DeepSeek V3.1",
+      "status": "active",
+      "contextWindow": 128000,
+      "releaseDate": "2025-09-15",
+      "description": "Enhanced V3 with better instruction following and reduced hallucinations",
+      "pricing": { "input": 0.27, "output": 1.10 },
+      "capabilities": ["text", "code", "function-calling"],
+      "changelog": [
+        { "date": "2025-09-15", "type": "release", "description": "DeepSeek V3.1 released with improved instruction following" }
+      ]
+    },
+    {
+      "id": "v3",
+      "name": "DeepSeek V3",
+      "status": "active",
+      "contextWindow": 128000,
+      "releaseDate": "2025-01-20",
+      "description": "671B MoE model trained for $5.6M, competing with GPT-4 class models",
+      "pricing": { "input": 0.27, "output": 1.10 },
+      "capabilities": ["text", "code", "function-calling"],
+      "changelog": [
+        { "date": "2024-12-26", "type": "release", "description": "DeepSeek V3 launched, trained for just $5.6M" },
+        { "date": "2025-01-20", "type": "update", "description": "V3 API generally available with 128K context" }
+      ]
+    },
+    {
+      "id": "r1",
+      "name": "DeepSeek R1",
+      "status": "active",
+      "contextWindow": 128000,
+      "releaseDate": "2025-01-20",
+      "description": "Open-source reasoning model competitive with o1 at fraction of the cost",
+      "pricing": { "input": 0.55, "output": 2.19 },
+      "capabilities": ["text", "reasoning", "code"],
+      "changelog": [
+        { "date": "2025-01-20", "type": "release", "description": "DeepSeek R1 released as open-source reasoning model, rivaling o1" },
+        { "date": "2025-02-15", "type": "update", "description": "R1 API pricing reduced significantly" }
+      ]
+    },
+    {
+      "id": "r1-0528",
+      "name": "DeepSeek R1-0528",
+      "status": "active",
+      "contextWindow": 128000,
+      "releaseDate": "2025-05-28",
+      "description": "Updated R1 with improved math and coding performance",
+      "pricing": { "input": 0.55, "output": 2.19 },
+      "capabilities": ["text", "reasoning", "code"],
+      "changelog": [
+        { "date": "2025-05-28", "type": "release", "description": "R1-0528 released with significant improvements in math reasoning" }
+      ]
+    }
+  ]
+}

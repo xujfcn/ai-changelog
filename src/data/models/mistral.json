@@ -1,0 +1,76 @@
+{
+  "provider": "mistral",
+  "displayName": "Mistral",
+  "color": "#f97316",
+  "website": "https://mistral.ai",
+  "models": [
+    {
+      "id": "mistral-large-2",
+      "name": "Mistral Large 2",
+      "status": "active",
+      "contextWindow": 128000,
+      "releaseDate": "2024-07-24",
+      "description": "Flagship 123B model with top-tier reasoning and multilingual support",
+      "pricing": { "input": 2.00, "output": 6.00 },
+      "capabilities": ["text", "code", "function-calling", "multilingual"],
+      "changelog": [
+        { "date": "2024-07-24", "type": "release", "description": "Mistral Large 2 (123B) released with 128K context" },
+        { "date": "2024-11-18", "type": "update", "description": "mistral-large-2411 update with improved instruction following" }
+      ]
+    },
+    {
+      "id": "mistral-medium",
+      "name": "Mistral Medium",
+      "status": "active",
+      "contextWindow": 128000,
+      "releaseDate": "2025-01-15",
+      "description": "Mid-range model balancing capability and efficiency",
+      "pricing": { "input": 0.80, "output": 2.40 },
+      "capabilities": ["text", "code", "function-calling"],
+      "changelog": [
+        { "date": "2025-01-15", "type": "release", "description": "Mistral Medium relaunched with improved architecture" }
+      ]
+    },
+    {
+      "id": "mistral-small",
+      "name": "Mistral Small",
+      "status": "active",
+      "contextWindow": 128000,
+      "releaseDate": "2025-01-30",
+      "description": "Efficient 24B model for cost-effective deployments",
+      "pricing": { "input": 0.10, "output": 0.30 },
+      "capabilities": ["text", "code", "function-calling"],
+      "changelog": [
+        { "date": "2024-09-18", "type": "release", "description": "Mistral Small 24B released" },
+        { "date": "2025-01-30", "type": "update", "description": "Mistral Small 25.01 update with better performance" }
+      ]
+    },
+    {
+      "id": "codestral",
+      "name": "Codestral",
+      "status": "active",
+      "contextWindow": 256000,
+      "releaseDate": "2025-01-14",
+      "description": "Specialized code generation model with 256K context",
+      "pricing": { "input": 0.30, "output": 0.90 },
+      "capabilities": ["code", "text", "fill-in-middle"],
+      "changelog": [
+        { "date": "2024-05-29", "type": "release", "description": "Codestral launched as first dedicated Mistral coding model" },
+        { "date": "2025-01-14", "type": "update", "description": "Codestral 25.01 with 256K context and improved performance" }
+      ]
+    },
+    {
+      "id": "pixtral-large",
+      "name": "Pixtral Large",
+      "status": "active",
+      "contextWindow": 128000,
+      "releaseDate": "2024-11-18",
+      "description": "124B multimodal model with advanced vision capabilities",
+      "pricing": { "input": 2.00, "output": 6.00 },
+      "capabilities": ["text", "vision", "code", "function-calling"],
+      "changelog": [
+        { "date": "2024-11-18", "type": "release", "description": "Pixtral Large 124B released with native multimodal understanding" }
+      ]
+    }
+  ]
+}
