@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -65,6 +66,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={inter.className}>
+        <Script
+          src="https://cloud.umami.is/script.js"
+          data-website-id="85911674-04ec-4b92-9716-ab1dc311c39e"
+          strategy="afterInteractive"
+        />
         <div className="min-h-screen flex flex-col">
           <Header />
           <main className="flex-1">{children}</main>
