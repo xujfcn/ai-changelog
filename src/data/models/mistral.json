@@ -19,6 +19,46 @@
       ]
     },
     {
+      "id": "mistral-small-4",
+      "name": "Mistral Small 4",
+      "status": "active",
+      "contextWindow": 256000,
+      "releaseDate": "2026-03-18",
+      "description": "Updated small Mistral model for low-latency chat, tool use, and coding workloads",
+      "pricing": { "input": 0.15, "output": 0.45 },
+      "capabilities": ["text", "code", "function-calling", "multilingual"],
+      "changelog": [
+        { "date": "2026-03-18", "type": "release", "description": "Mistral Small 4 released as the latest cost-efficient Small family model with 256K context" },
+        { "date": "2026-03-18", "type": "pricing", "description": "Pricing set at $0.15 per 1M input tokens and $0.45 per 1M output tokens" }
+      ]
+    },
+    {
+      "id": "leanstral",
+      "name": "Leanstral",
+      "status": "active",
+      "contextWindow": 128000,
+      "releaseDate": "2026-03-19",
+      "description": "Mistral model specialized for theorem proving, formal reasoning, and Lean workflows",
+      "pricing": { "input": 0.20, "output": 0.60 },
+      "capabilities": ["text", "code", "reasoning", "formal-methods"],
+      "changelog": [
+        { "date": "2026-03-19", "type": "release", "description": "Leanstral released for formal mathematics and Lean-assisted reasoning tasks" }
+      ]
+    },
+    {
+      "id": "voxtral-tts",
+      "name": "Voxtral TTS",
+      "status": "active",
+      "contextWindow": 32000,
+      "releaseDate": "2026-03-31",
+      "description": "Speech generation model in the Voxtral family for text-to-speech workloads",
+      "pricing": { "input": 0.00, "output": 0.02, "unit": "1K chars" },
+      "capabilities": ["audio", "speech", "text-to-speech"],
+      "changelog": [
+        { "date": "2026-03-31", "type": "release", "description": "Voxtral TTS released for speech generation and voice output use cases" }
+      ]
+    },
+    {
       "id": "mistral-medium",
       "name": "Mistral Medium",
       "status": "active",

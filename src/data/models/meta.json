@@ -14,7 +14,8 @@
       "pricing": { "input": 0.00, "output": 0.00 },
       "capabilities": ["text", "vision", "code", "multilingual"],
       "changelog": [
-        { "date": "2025-04-05", "type": "release", "description": "Llama 4 Maverick released as open-source 400B MoE model" }
+        { "date": "2025-04-05", "type": "release", "description": "Llama 4 Maverick released as open-source 400B MoE model" },
+        { "date": "2026-04-21", "type": "update", "description": "Meta confirmed Llama 4 Behemoth was still in training, leaving Maverick and Scout as the current released Llama 4 models" }
       ]
     },
     {

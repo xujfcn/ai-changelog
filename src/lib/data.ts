@@ -12,8 +12,10 @@ export interface ChangelogEntry {
 }
 
 export interface ModelPricing {
-  input: number;
-  output: number;
+  input: number | null;
+  output: number | null;
+  unit?: string;
+  note?: string;
 }
 
 export interface Model {
@@ -106,9 +108,14 @@ export function formatContextWindow(tokens: number): string {
   return `${(tokens / 1000).toFixed(0)}K`;
 }
 
-export function formatPrice(price: number): string {
+export function formatPrice(price: number | null | undefined): string {
+  if (price === null || price === undefined) return "N/A";
   if (price === 0) return "Free";
   return `$${price.toFixed(2)}`;
+}
+
+export function formatPriceUnit(pricing: ModelPricing): string {
+  return pricing.unit || "1M";
 }
 
 export function formatDate(dateStr: string): string {

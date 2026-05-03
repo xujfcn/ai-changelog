@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Model, formatContextWindow, formatPrice, getStatusBadge } from "@/lib/data";
+import { Model, formatContextWindow, formatPrice, formatPriceUnit, getStatusBadge } from "@/lib/data";
 
 interface ModelCardProps {
   model: Model;
@@ -31,11 +31,11 @@ export function ModelCard({ model, providerSlug, providerColor }: ModelCardProps
         </div>
         <div>
           <span className="font-medium text-foreground/70">Input:</span>{" "}
-          {formatPrice(model.pricing.input)}/1M
+          {formatPrice(model.pricing.input)}/{formatPriceUnit(model.pricing)}
         </div>
         <div>
           <span className="font-medium text-foreground/70">Output:</span>{" "}
-          {formatPrice(model.pricing.output)}/1M
+          {formatPrice(model.pricing.output)}/{formatPriceUnit(model.pricing)}
         </div>
       </div>
       <div className="mt-3 flex flex-wrap gap-1">

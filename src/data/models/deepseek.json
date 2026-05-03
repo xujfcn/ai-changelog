@@ -18,6 +18,32 @@
       ]
     },
     {
+      "id": "deepseek-v4-pro-preview",
+      "name": "DeepSeek V4 Pro Preview",
+      "status": "preview",
+      "contextWindow": 256000,
+      "releaseDate": "2026-04-15",
+      "description": "Preview of DeepSeek's next-generation general-purpose model with stronger reasoning, coding, and tool use",
+      "pricing": { "input": 0.55, "output": 2.19 },
+      "capabilities": ["text", "code", "reasoning", "function-calling"],
+      "changelog": [
+        { "date": "2026-04-15", "type": "release", "description": "DeepSeek V4 Pro Preview made available for early API evaluation" }
+      ]
+    },
+    {
+      "id": "deepseek-v4-flash-preview",
+      "name": "DeepSeek V4 Flash Preview",
+      "status": "preview",
+      "contextWindow": 256000,
+      "releaseDate": "2026-04-15",
+      "description": "Lower-latency DeepSeek V4 preview model for high-throughput chat, coding, and agent workloads",
+      "pricing": { "input": 0.14, "output": 0.28 },
+      "capabilities": ["text", "code", "function-calling"],
+      "changelog": [
+        { "date": "2026-04-15", "type": "release", "description": "DeepSeek V4 Flash Preview released alongside V4 Pro Preview for faster and lower-cost API workloads" }
+      ]
+    },
+    {
       "id": "v3-1",
       "name": "DeepSeek V3.1",
       "status": "active",

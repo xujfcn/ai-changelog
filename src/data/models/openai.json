@@ -11,11 +11,68 @@
       "contextWindow": 1000000,
       "releaseDate": "2026-02-15",
       "description": "Most capable GPT model with 1M context window and enhanced reasoning",
-      "pricing": { "input": 2.00, "output": 8.00 },
+      "pricing": { "input": 3.00, "output": 12.00 },
       "capabilities": ["text", "vision", "function-calling", "json-mode"],
       "changelog": [
         { "date": "2026-02-15", "type": "release", "description": "Initial release of GPT-5.4 with 1M context window" },
-        { "date": "2026-03-01", "type": "pricing", "description": "Price reduced from $2.50 to $2.00 per 1M input tokens" }
+        { "date": "2026-03-01", "type": "pricing", "description": "API pricing set at $3.00 per 1M input tokens and $12.00 per 1M output tokens" }
+      ]
+    },
+    {
+      "id": "gpt-5.5",
+      "name": "GPT-5.5",
+      "status": "preview",
+      "contextWindow": 1000000,
+      "releaseDate": "2026-04-23",
+      "description": "Frontier GPT model for professional work, coding, and complex reasoning in ChatGPT and Codex",
+      "pricing": { "input": 5.00, "output": 30.00 },
+      "capabilities": ["text", "vision", "reasoning", "code", "function-calling", "json-mode"],
+      "changelog": [
+        { "date": "2026-04-23", "type": "release", "description": "GPT-5.5 introduced for ChatGPT, Codex, and upcoming API access with 1M context" },
+        { "date": "2026-04-23", "type": "pricing", "description": "API pricing announced at $5.00 per 1M input tokens and $30.00 per 1M output tokens" }
+      ]
+    },
+    {
+      "id": "gpt-5.5-pro",
+      "name": "GPT-5.5 Pro",
+      "status": "preview",
+      "contextWindow": 1000000,
+      "releaseDate": "2026-04-23",
+      "description": "Higher-compute GPT-5.5 variant for the most difficult reasoning and coding tasks",
+      "pricing": { "input": 30.00, "output": 180.00 },
+      "capabilities": ["text", "vision", "reasoning", "code", "extended-thinking"],
+      "changelog": [
+        { "date": "2026-04-23", "type": "release", "description": "GPT-5.5 Pro introduced as the high-compute GPT-5.5 mode for harder questions and higher-accuracy work" },
+        { "date": "2026-04-23", "type": "pricing", "description": "API pricing announced at $30.00 per 1M input tokens and $180.00 per 1M output tokens" }
+      ]
+    },
+    {
+      "id": "gpt-5.4-mini",
+      "name": "GPT-5.4 Mini",
+      "status": "active",
+      "contextWindow": 400000,
+      "releaseDate": "2026-03-17",
+      "description": "Smaller GPT-5.4 variant optimized for lower latency and cost while retaining strong tool and coding performance",
+      "pricing": { "input": 0.75, "output": 4.50 },
+      "capabilities": ["text", "vision", "function-calling", "json-mode", "code"],
+      "changelog": [
+        { "date": "2026-03-17", "type": "release", "description": "GPT-5.4 Mini released in the API, Codex, and ChatGPT with 400K context" },
+        { "date": "2026-03-17", "type": "pricing", "description": "API pricing set at $0.75 per 1M input tokens and $4.50 per 1M output tokens" },
+        { "date": "2026-03-18", "type": "update", "description": "Rolled out in ChatGPT as Thinking access for Free and Go users and as a fallback for GPT-5.4 Thinking limits" }
+      ]
+    },
+    {
+      "id": "gpt-5.4-nano",
+      "name": "GPT-5.4 Nano",
+      "status": "active",
+      "contextWindow": 400000,
+      "releaseDate": "2026-03-17",
+      "description": "Lowest-cost GPT-5.4 family model for high-throughput classification, extraction, and lightweight agent tasks",
+      "pricing": { "input": 0.20, "output": 1.25 },
+      "capabilities": ["text", "function-calling", "json-mode", "reasoning"],
+      "changelog": [
+        { "date": "2026-03-17", "type": "release", "description": "GPT-5.4 Nano released for latency-sensitive and high-volume workloads in the API" },
+        { "date": "2026-03-17", "type": "pricing", "description": "API pricing set at $0.20 per 1M input tokens and $1.25 per 1M output tokens" }
       ]
     },
     {

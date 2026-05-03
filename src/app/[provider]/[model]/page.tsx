@@ -6,6 +6,7 @@ import {
   getModel,
   formatContextWindow,
   formatPrice,
+  formatPriceUnit,
   formatDate,
   getStatusBadge,
   getChangeTypeBadge,
@@ -31,9 +32,10 @@ export async function generateMetadata({
   if (!result) return {};
 
   const { provider, model } = result;
+  const priceUnit = formatPriceUnit(model.pricing);
   return {
     title: `${model.name} Changelog — ${provider.displayName} Model Version History`,
-    description: `${model.name} version history, pricing, and updates. Context window: ${formatContextWindow(model.contextWindow)}. Status: ${model.status}. Input: ${formatPrice(model.pricing.input)}/1M tokens. Output: ${formatPrice(model.pricing.output)}/1M tokens.`,
+    description: `${model.name} version history, pricing, and updates. Context window: ${formatContextWindow(model.contextWindow)}. Status: ${model.status}. Input: ${formatPrice(model.pricing.input)}/${priceUnit} tokens. Output: ${formatPrice(model.pricing.output)}/${priceUnit} tokens.`,
     openGraph: {
       title: `${model.name} — AI Model Changelog`,
       description: `Track ${model.name} updates, pricing changes, and version history.`,
@@ -52,6 +54,7 @@ export default async function ModelPage({
 
   const { provider, model } = result;
   const status = getStatusBadge(model.status);
+  const priceUnit = formatPriceUnit(model.pricing);
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -61,9 +64,9 @@ export default async function ModelPage({
     operatingSystem: "Cloud",
     offers: {
       "@type": "Offer",
-      price: model.pricing.input,
+      price: model.pricing.input ?? 0,
       priceCurrency: "USD",
-      description: `Per 1M input tokens. Output: $${model.pricing.output}/1M tokens.`,
+      description: model.pricing.note || `Per ${priceUnit} input tokens. Output: ${formatPrice(model.pricing.output)}/${priceUnit} tokens.`,
     },
     author: {
       "@type": "Organization",
@@ -116,11 +119,12 @@ export default async function ModelPage({
           </div>
           <div className="rounded-lg border border-border/50 bg-card p-4">
             <div className="text-sm text-muted-foreground mb-1">Input Price</div>
-            <div className="text-xl font-bold">{formatPrice(model.pricing.input)}<span className="text-sm font-normal text-muted-foreground">/1M</span></div>
+            <div className="text-xl font-bold">{formatPrice(model.pricing.input)}<span className="text-sm font-normal text-muted-foreground">/{priceUnit}</span></div>
+            {model.pricing.note && <div className="mt-1 text-xs text-muted-foreground">{model.pricing.note}</div>}
           </div>
           <div className="rounded-lg border border-border/50 bg-card p-4">
             <div className="text-sm text-muted-foreground mb-1">Output Price</div>
-            <div className="text-xl font-bold">{formatPrice(model.pricing.output)}<span className="text-sm font-normal text-muted-foreground">/1M</span></div>
+            <div className="text-xl font-bold">{formatPrice(model.pricing.output)}<span className="text-sm font-normal text-muted-foreground">/{priceUnit}</span></div>
           </div>
           <div className="rounded-lg border border-border/50 bg-card p-4">
             <div className="text-sm text-muted-foreground mb-1">Released</div>
