@@ -4,6 +4,7 @@ import { FlatChangelogEntry, getProvider } from "@/lib/data";
 import { ModelCard } from "@/components/model-card";
 import { FilterableTimeline } from "@/components/filterable-timeline";
 import { defaultLocale, getDictionary, getLocalizedPath, Locale } from "@/lib/i18n";
+import { localizeFlatChangelogEntries, localizeModelForDisplay } from "@/lib/localized-content";
 
 export function ProviderPageContent({
   providerSlug,
@@ -16,8 +17,11 @@ export function ProviderPageContent({
   if (!provider) notFound();
   const t = getDictionary(locale);
 
-  const activeModels = provider.models.filter((model) => model.status === "active");
-  const deprecatedModels = provider.models.filter((model) => model.status === "deprecated");
+  const localizedModels = provider.models.map((model) =>
+    localizeModelForDisplay(model, provider.displayName, locale)
+  );
+  const activeModels = localizedModels.filter((model) => model.status === "active");
+  const deprecatedModels = localizedModels.filter((model) => model.status === "deprecated");
 
   const allChanges: FlatChangelogEntry[] = [];
   for (const model of provider.models) {
@@ -33,6 +37,7 @@ export function ProviderPageContent({
     }
   }
   allChanges.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  const localizedChanges = localizeFlatChangelogEntries(allChanges, locale);
 
   return (
     <div className="container mx-auto max-w-6xl px-4 py-8">
@@ -95,7 +100,7 @@ export function ProviderPageContent({
 
       <section>
         <h2 className="text-xl font-bold mb-4">{t.provider.changeHistory}</h2>
-        <FilterableTimeline entries={allChanges} locale={locale} showProviderFilter={false} />
+        <FilterableTimeline entries={localizedChanges} locale={locale} showProviderFilter={false} />
       </section>
     </div>
   );

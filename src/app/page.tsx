@@ -3,6 +3,7 @@ import { getAllProviders, getRecentChangelog } from "@/lib/data";
 import { FilterableTimeline } from "@/components/filterable-timeline";
 import { LocalizedShell } from "@/components/localized-shell";
 import { defaultLocale, getDictionary, getLocalizedPath, Locale } from "@/lib/i18n";
+import { localizeFlatChangelogEntries } from "@/lib/localized-content";
 
 export function FAQSchema({ locale = defaultLocale }: { locale?: Locale }) {
   const t = getDictionary(locale).home.faq;
@@ -63,7 +64,7 @@ export default function HomePage() {
 
 export function HomePageContent({ locale = defaultLocale }: { locale?: Locale }) {
   const providers = getAllProviders();
-  const recentChanges = getRecentChangelog(30);
+  const recentChanges = localizeFlatChangelogEntries(getRecentChangelog(30), locale);
   const t = getDictionary(locale);
 
   const stats = {

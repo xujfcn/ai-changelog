@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Model, formatContextWindow, formatPrice, formatPriceUnit, getStatusBadge } from "@/lib/data";
 import { defaultLocale, getDictionary, getLocalizedPath, Locale } from "@/lib/i18n";
+import { localizeCapability } from "@/lib/localized-content";
 
 interface ModelCardProps {
   model: Model;
@@ -52,7 +53,7 @@ export function ModelCard({
             key={cap}
             className="inline-flex items-center rounded-md bg-secondary px-2 py-0.5 text-xs text-secondary-foreground"
           >
-            {cap}
+            {localizeCapability(cap, locale)}
           </span>
         ))}
         {model.capabilities.length > 4 && (

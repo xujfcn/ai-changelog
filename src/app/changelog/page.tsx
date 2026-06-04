@@ -4,6 +4,7 @@ import { getAllChangelog } from "@/lib/data";
 import { FilterableTimeline } from "@/components/filterable-timeline";
 import { LocalizedShell } from "@/components/localized-shell";
 import { defaultLocale, getDictionary, getLocalizedPath, Locale } from "@/lib/i18n";
+import { localizeFlatChangelogEntries } from "@/lib/localized-content";
 
 export const metadata: Metadata = {
   title: "Full Changelog — All AI Model Updates",
@@ -24,7 +25,7 @@ export default function ChangelogPage() {
 }
 
 export function ChangelogPageContent({ locale = defaultLocale }: { locale?: Locale }) {
-  const allChanges = getAllChangelog();
+  const allChanges = localizeFlatChangelogEntries(getAllChangelog(), locale);
   const t = getDictionary(locale);
 
   return (

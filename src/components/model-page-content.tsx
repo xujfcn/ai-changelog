@@ -10,6 +10,7 @@ import {
   getStatusBadge,
 } from "@/lib/data";
 import { defaultLocale, getDictionary, getLocalizedPath, Locale } from "@/lib/i18n";
+import { localizeCapability, localizeModelForDisplay } from "@/lib/localized-content";
 
 export function ModelPageContent({
   providerSlug,
@@ -23,7 +24,8 @@ export function ModelPageContent({
   const result = getModel(providerSlug, modelId);
   if (!result) notFound();
 
-  const { provider, model } = result;
+  const { provider } = result;
+  const model = localizeModelForDisplay(result.model, provider.displayName, locale);
   const status = getStatusBadge(model.status, locale);
   const priceUnit = formatPriceUnit(model.pricing);
   const t = getDictionary(locale);
@@ -116,7 +118,7 @@ export function ModelPageContent({
                 key={cap}
                 className="inline-flex items-center rounded-md border border-border bg-secondary px-3 py-1.5 text-sm font-medium text-secondary-foreground"
               >
-                {cap}
+                {localizeCapability(cap, locale)}
               </span>
             ))}
           </div>
