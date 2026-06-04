@@ -5,6 +5,20 @@
   "website": "https://ai.google.dev",
   "models": [
     {
+      "id": "gemini-3-5-flash",
+      "name": "Gemini 3.5 Flash",
+      "status": "active",
+      "contextWindow": 1000000,
+      "releaseDate": "2026-05-14",
+      "description": "Latest Flash model with stronger multimodal reasoning, faster generation, and improved long-context performance",
+      "pricing": { "input": 1.50, "output": 9.00 },
+      "capabilities": ["text", "vision", "audio", "video", "code", "reasoning", "function-calling"],
+      "changelog": [
+        { "date": "2026-05-14", "type": "release", "description": "Gemini 3.5 Flash released for Gemini API and Vertex AI with updated multimodal and reasoning performance" },
+        { "date": "2026-05-14", "type": "pricing", "description": "API pricing listed at $1.50 per 1M input tokens and $9.00 per 1M output tokens" }
+      ]
+    },
+    {
       "id": "gemini-3-1-pro",
       "name": "Gemini 3.1 Pro",
       "status": "active",

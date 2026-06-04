@@ -5,6 +5,20 @@
   "website": "https://anthropic.com",
   "models": [
     {
+      "id": "claude-opus-4-8",
+      "name": "Claude Opus 4.8",
+      "status": "active",
+      "contextWindow": 1000000,
+      "releaseDate": "2026-05-20",
+      "description": "Latest Opus model with stronger long-context reasoning, coding, and agentic tool-use performance",
+      "pricing": { "input": 5.00, "output": 25.00 },
+      "capabilities": ["text", "vision", "extended-thinking", "tool-use", "code"],
+      "changelog": [
+        { "date": "2026-05-20", "type": "release", "description": "Claude Opus 4.8 released as Anthropic's latest high-capability model with a 1M context window" },
+        { "date": "2026-05-20", "type": "pricing", "description": "Pricing remains $5.00 per 1M input tokens and $25.00 per 1M output tokens" }
+      ]
+    },
+    {
       "id": "claude-opus-4-6",
       "name": "Claude Opus 4.6",
       "status": "active",

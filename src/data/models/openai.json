@@ -21,21 +21,23 @@
     {
       "id": "gpt-5.5",
       "name": "GPT-5.5",
-      "status": "preview",
+      "status": "active",
       "contextWindow": 1000000,
       "releaseDate": "2026-04-23",
       "description": "Frontier GPT model for professional work, coding, and complex reasoning in ChatGPT and Codex",
       "pricing": { "input": 5.00, "output": 30.00 },
       "capabilities": ["text", "vision", "reasoning", "code", "function-calling", "json-mode"],
       "changelog": [
-        { "date": "2026-04-23", "type": "release", "description": "GPT-5.5 introduced for ChatGPT, Codex, and upcoming API access with 1M context" },
-        { "date": "2026-04-23", "type": "pricing", "description": "API pricing announced at $5.00 per 1M input tokens and $30.00 per 1M output tokens" }
+        { "date": "2026-04-23", "type": "release", "description": "GPT-5.5 introduced for ChatGPT and Codex as OpenAI's frontier model for complex professional work" },
+        { "date": "2026-04-24", "type": "update", "description": "GPT-5.5 became available in the API with a 1M context window" },
+        { "date": "2026-04-24", "type": "pricing", "description": "API pricing set at $5.00 per 1M input tokens and $30.00 per 1M output tokens" },
+        { "date": "2026-05-28", "type": "update", "description": "ChatGPT and API update improved GPT-5.5 Instant style and removed Canvas from GPT-5.5 Instant and Thinking" }
       ]
     },
     {
       "id": "gpt-5.5-pro",
       "name": "GPT-5.5 Pro",
-      "status": "preview",
+      "status": "active",
       "contextWindow": 1000000,
       "releaseDate": "2026-04-23",
       "description": "Higher-compute GPT-5.5 variant for the most difficult reasoning and coding tasks",
@@ -43,7 +45,22 @@
       "capabilities": ["text", "vision", "reasoning", "code", "extended-thinking"],
       "changelog": [
         { "date": "2026-04-23", "type": "release", "description": "GPT-5.5 Pro introduced as the high-compute GPT-5.5 mode for harder questions and higher-accuracy work" },
-        { "date": "2026-04-23", "type": "pricing", "description": "API pricing announced at $30.00 per 1M input tokens and $180.00 per 1M output tokens" }
+        { "date": "2026-04-24", "type": "update", "description": "GPT-5.5 Pro became available in the API for higher-accuracy work" },
+        { "date": "2026-04-24", "type": "pricing", "description": "API pricing set at $30.00 per 1M input tokens and $180.00 per 1M output tokens" }
+      ]
+    },
+    {
+      "id": "gpt-5.5-instant",
+      "name": "GPT-5.5 Instant",
+      "status": "active",
+      "contextWindow": 128000,
+      "releaseDate": "2026-05-05",
+      "description": "Default ChatGPT model optimized for fast, accurate, concise everyday assistance and personalization",
+      "pricing": { "input": null, "output": null, "note": "Available in the API through the chat-latest alias" },
+      "capabilities": ["text", "vision", "web-search", "personalization", "function-calling"],
+      "changelog": [
+        { "date": "2026-05-05", "type": "release", "description": "GPT-5.5 Instant rolled out as ChatGPT's default model for all users and as chat-latest in the API, replacing GPT-5.3 Instant" },
+        { "date": "2026-05-28", "type": "update", "description": "Updated in ChatGPT and the API for more natural, better-paced responses with fewer overly long or bullet-heavy answers" }
       ]
     },
     {
@@ -191,11 +208,13 @@
       "status": "active",
       "contextWindow": 200000,
       "releaseDate": "2025-04-16",
+      "deprecationDate": "2026-08-26",
       "description": "Advanced reasoning model with breakthrough performance on complex tasks",
       "pricing": { "input": 10.00, "output": 40.00 },
       "capabilities": ["text", "vision", "reasoning", "function-calling"],
       "changelog": [
-        { "date": "2025-04-16", "type": "release", "description": "o3 launched with state-of-the-art reasoning on ARC-AGI and math benchmarks" }
+        { "date": "2025-04-16", "type": "release", "description": "o3 launched with state-of-the-art reasoning on ARC-AGI and math benchmarks" },
+        { "date": "2026-05-28", "type": "deprecation", "description": "OpenAI announced that o3 will be retired from ChatGPT on August 26, 2026 after a 90-day sunset period" }
       ]
     },
     {

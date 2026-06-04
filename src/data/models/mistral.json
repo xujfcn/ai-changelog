@@ -5,6 +5,20 @@
   "website": "https://mistral.ai",
   "models": [
     {
+      "id": "mistral-medium-3-5",
+      "name": "Mistral Medium 3.5",
+      "status": "active",
+      "contextWindow": 262000,
+      "releaseDate": "2026-04-28",
+      "description": "Updated enterprise-grade Mistral model for coding, tool use, long-context reasoning, and multilingual workloads",
+      "pricing": { "input": 1.50, "output": 7.50 },
+      "capabilities": ["text", "code", "reasoning", "function-calling", "multilingual"],
+      "changelog": [
+        { "date": "2026-04-28", "type": "release", "description": "Mistral Medium 3.5 released as the latest Medium family model with 262K context" },
+        { "date": "2026-04-28", "type": "pricing", "description": "Pricing set at $1.50 per 1M input tokens and $7.50 per 1M output tokens" }
+      ]
+    },
+    {
       "id": "mistral-large-2",
       "name": "Mistral Large 2",
       "status": "active",

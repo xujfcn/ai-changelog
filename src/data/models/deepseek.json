@@ -19,28 +19,31 @@
     },
     {
       "id": "deepseek-v4-pro-preview",
-      "name": "DeepSeek V4 Pro Preview",
-      "status": "preview",
-      "contextWindow": 256000,
-      "releaseDate": "2026-04-15",
-      "description": "Preview of DeepSeek's next-generation general-purpose model with stronger reasoning, coding, and tool use",
-      "pricing": { "input": 0.55, "output": 2.19 },
+      "name": "DeepSeek V4 Pro",
+      "status": "active",
+      "contextWindow": 1000000,
+      "releaseDate": "2026-04-24",
+      "description": "DeepSeek's next-generation general-purpose model with stronger reasoning, coding, and tool use",
+      "pricing": { "input": 0.50, "output": 1.50 },
       "capabilities": ["text", "code", "reasoning", "function-calling"],
       "changelog": [
-        { "date": "2026-04-15", "type": "release", "description": "DeepSeek V4 Pro Preview made available for early API evaluation" }
+        { "date": "2026-04-24", "type": "release", "description": "DeepSeek V4 Pro released for API access with stronger reasoning, coding, and tool-use performance" },
+        { "date": "2026-04-24", "type": "pricing", "description": "Promotional API pricing listed at $0.50 per 1M input tokens and $1.50 per 1M output tokens" }
       ]
     },
     {
       "id": "deepseek-v4-flash-preview",
-      "name": "DeepSeek V4 Flash Preview",
-      "status": "preview",
-      "contextWindow": 256000,
-      "releaseDate": "2026-04-15",
-      "description": "Lower-latency DeepSeek V4 preview model for high-throughput chat, coding, and agent workloads",
+      "name": "DeepSeek V4 Flash",
+      "status": "active",
+      "contextWindow": 1000000,
+      "releaseDate": "2026-04-24",
+      "description": "Lower-latency DeepSeek V4 model for high-throughput chat, coding, and agent workloads",
       "pricing": { "input": 0.14, "output": 0.28 },
       "capabilities": ["text", "code", "function-calling"],
       "changelog": [
-        { "date": "2026-04-15", "type": "release", "description": "DeepSeek V4 Flash Preview released alongside V4 Pro Preview for faster and lower-cost API workloads" }
+        { "date": "2026-04-24", "type": "release", "description": "DeepSeek V4 Flash released alongside V4 Pro for faster and lower-cost API workloads" },
+        { "date": "2026-04-24", "type": "pricing", "description": "Pricing set at $0.14 per 1M input tokens and $0.28 per 1M output tokens" },
+        { "date": "2026-05-15", "type": "deprecation", "description": "DeepSeek scheduled deepseek-chat and deepseek-reasoner compatibility aliases for retirement on June 15, 2026" }
       ]
     },
     {
