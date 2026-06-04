@@ -1,42 +1,45 @@
 import Link from "next/link";
 import { getAllProviders, getRecentChangelog } from "@/lib/data";
 import { FilterableTimeline } from "@/components/filterable-timeline";
+import { LocalizedShell } from "@/components/localized-shell";
+import { defaultLocale, getDictionary, getLocalizedPath, Locale } from "@/lib/i18n";
 
-function FAQSchema() {
+export function FAQSchema({ locale = defaultLocale }: { locale?: Locale }) {
+  const t = getDictionary(locale).home.faq;
   const faq = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: [
       {
         "@type": "Question",
-        name: "What is AI Model Changelog?",
+        name: t.whatQuestion,
         acceptedAnswer: {
           "@type": "Answer",
-          text: "AI Model Changelog tracks version history, updates, deprecations, and pricing changes for all major AI models from providers like OpenAI, Anthropic, Google, DeepSeek, Meta, and Mistral.",
+          text: t.whatAnswer,
         },
       },
       {
         "@type": "Question",
-        name: "Which AI model providers are tracked?",
+        name: t.providersQuestion,
         acceptedAnswer: {
           "@type": "Answer",
-          text: "We track OpenAI (GPT-5, GPT-4o, o3), Anthropic (Claude Opus 4, Sonnet, Haiku), Google (Gemini), DeepSeek (V3, R1), Meta (Llama 4), and Mistral (Large, Codestral).",
+          text: t.providersAnswer,
         },
       },
       {
         "@type": "Question",
-        name: "How often is the AI Model Changelog updated?",
+        name: t.frequencyQuestion,
         acceptedAnswer: {
           "@type": "Answer",
-          text: "The changelog is updated as soon as providers announce new models, pricing changes, updates, or deprecations. We aim to reflect changes within 24 hours of official announcements.",
+          text: t.frequencyAnswer,
         },
       },
       {
         "@type": "Question",
-        name: "Can I access these AI models through a single API?",
+        name: t.apiQuestion,
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes! Crazyrouter provides a unified API that lets you access all these models with a single API key. Visit crazyrouter.com to get started.",
+          text: t.apiAnswer,
         },
       },
     ],
@@ -51,8 +54,17 @@ function FAQSchema() {
 }
 
 export default function HomePage() {
+  return (
+    <LocalizedShell locale={defaultLocale}>
+      <HomePageContent locale={defaultLocale} />
+    </LocalizedShell>
+  );
+}
+
+export function HomePageContent({ locale = defaultLocale }: { locale?: Locale }) {
   const providers = getAllProviders();
   const recentChanges = getRecentChangelog(30);
+  const t = getDictionary(locale);
 
   const stats = {
     providers: providers.length,
@@ -70,22 +82,21 @@ export default function HomePage() {
 
   return (
     <>
-      <FAQSchema />
+      <FAQSchema locale={locale} />
       {/* Hero */}
       <section className="border-b border-border/40">
         <div className="container mx-auto max-w-6xl px-4 py-16 md:py-24 text-center">
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
-            AI Model Changelog
+            {t.home.heroTitle}
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Track every AI model update in one place — releases, pricing changes,
-            deprecations, and more.
+            {t.home.heroSubtitle}
           </p>
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             {providers.map((p) => (
               <Link
                 key={p.provider}
-                href={`/${p.provider}`}
+                href={getLocalizedPath(locale, `/${p.provider}`)}
                 className="inline-flex items-center rounded-full border border-border px-4 py-2 text-sm font-medium transition-colors hover:bg-accent"
               >
                 <span
@@ -99,19 +110,19 @@ export default function HomePage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
             <div className="rounded-lg border border-border/50 bg-card p-4">
               <div className="text-2xl font-bold">{stats.providers}</div>
-              <div className="text-sm text-muted-foreground">Providers</div>
+              <div className="text-sm text-muted-foreground">{t.common.providers}</div>
             </div>
             <div className="rounded-lg border border-border/50 bg-card p-4">
               <div className="text-2xl font-bold">{stats.models}</div>
-              <div className="text-sm text-muted-foreground">Models</div>
+              <div className="text-sm text-muted-foreground">{t.home.models}</div>
             </div>
             <div className="rounded-lg border border-border/50 bg-card p-4">
               <div className="text-2xl font-bold">{stats.activeModels}</div>
-              <div className="text-sm text-muted-foreground">Active</div>
+              <div className="text-sm text-muted-foreground">{t.home.activeModels}</div>
             </div>
             <div className="rounded-lg border border-border/50 bg-card p-4">
               <div className="text-2xl font-bold">{stats.changes}</div>
-              <div className="text-sm text-muted-foreground">Updates Tracked</div>
+              <div className="text-sm text-muted-foreground">{t.home.updatesTracked}</div>
             </div>
           </div>
         </div>
@@ -120,25 +131,25 @@ export default function HomePage() {
       {/* Recent Changes */}
       <section className="container mx-auto max-w-6xl px-4 py-12">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold">Recent Changes</h2>
+          <h2 className="text-2xl font-bold">{t.home.recentChanges}</h2>
           <Link
-            href="/changelog"
+            href={getLocalizedPath(locale, "/changelog")}
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
-            View all →
+            {t.common.viewAll} →
           </Link>
         </div>
-        <FilterableTimeline entries={recentChanges} />
+        <FilterableTimeline entries={recentChanges} locale={locale} />
       </section>
 
       {/* CTA */}
       <section className="border-t border-border/40">
         <div className="container mx-auto max-w-6xl px-4 py-16 text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            Access all these models with one API key
+            {t.home.ctaTitle}
           </h2>
           <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-            Crazyrouter gives you a single API endpoint to access OpenAI, Anthropic, Google, DeepSeek, Meta, Mistral, and more.
+            {t.home.ctaBody}
           </p>
           <a
             href="https://crazyrouter.com?utm_source=aichangelog&utm_medium=homepage&utm_campaign=cta"
@@ -146,7 +157,7 @@ export default function HomePage() {
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
           >
-            Get Started with Crazyrouter →
+            {t.common.getStarted} →
           </a>
         </div>
       </section>

@@ -4,6 +4,7 @@ import googleData from "@/data/models/google.json";
 import deepseekData from "@/data/models/deepseek.json";
 import metaData from "@/data/models/meta.json";
 import mistralData from "@/data/models/mistral.json";
+import { defaultLocale, getDictionary, Locale } from "@/lib/i18n";
 
 export interface ChangelogEntry {
   date: string;
@@ -118,8 +119,9 @@ export function formatPriceUnit(pricing: ModelPricing): string {
   return pricing.unit || "1M";
 }
 
-export function formatDate(dateStr: string): string {
-  return new Date(dateStr).toLocaleDateString("en-US", {
+export function formatDate(dateStr: string, locale: Locale = defaultLocale): string {
+  const localeCode = locale === "zh" ? "zh-CN" : locale === "ja" ? "ja-JP" : locale === "ru" ? "ru-RU" : "en-US";
+  return new Date(dateStr).toLocaleDateString(localeCode, {
     year: "numeric",
     month: "short",
     day: "numeric",
@@ -133,29 +135,37 @@ export function getProviderColor(provider: string): string {
   return p?.color || "#666";
 }
 
-export function getStatusBadge(status: string): { label: string; emoji: string; className: string } {
+export function getStatusBadge(
+  status: string,
+  locale: Locale = defaultLocale
+): { label: string; emoji: string; className: string } {
+  const t = getDictionary(locale).common;
   switch (status) {
     case "active":
-      return { label: "Active", emoji: "✅", className: "bg-green-500/10 text-green-400 border-green-500/20" };
+      return { label: t.active, emoji: "✅", className: "bg-green-500/10 text-green-400 border-green-500/20" };
     case "deprecated":
-      return { label: "Deprecated", emoji: "⚠️", className: "bg-yellow-500/10 text-yellow-400 border-yellow-500/20" };
+      return { label: t.deprecated, emoji: "⚠️", className: "bg-yellow-500/10 text-yellow-400 border-yellow-500/20" };
     case "preview":
-      return { label: "Preview", emoji: "🔬", className: "bg-blue-500/10 text-blue-400 border-blue-500/20" };
+      return { label: t.preview, emoji: "🔬", className: "bg-blue-500/10 text-blue-400 border-blue-500/20" };
     default:
       return { label: status, emoji: "", className: "bg-gray-500/10 text-gray-400 border-gray-500/20" };
   }
 }
 
-export function getChangeTypeBadge(type: string): { label: string; className: string } {
+export function getChangeTypeBadge(
+  type: string,
+  locale: Locale = defaultLocale
+): { label: string; className: string } {
+  const t = getDictionary(locale).common;
   switch (type) {
     case "release":
-      return { label: "New Release", className: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20" };
+      return { label: t.newRelease, className: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20" };
     case "update":
-      return { label: "Update", className: "bg-blue-500/10 text-blue-400 border-blue-500/20" };
+      return { label: t.update, className: "bg-blue-500/10 text-blue-400 border-blue-500/20" };
     case "pricing":
-      return { label: "Pricing Change", className: "bg-purple-500/10 text-purple-400 border-purple-500/20" };
+      return { label: t.pricingChange, className: "bg-purple-500/10 text-purple-400 border-purple-500/20" };
     case "deprecation":
-      return { label: "Deprecation", className: "bg-red-500/10 text-red-400 border-red-500/20" };
+      return { label: t.deprecation, className: "bg-red-500/10 text-red-400 border-red-500/20" };
     default:
       return { label: type, className: "bg-gray-500/10 text-gray-400 border-gray-500/20" };
   }

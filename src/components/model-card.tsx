@@ -1,18 +1,26 @@
 import Link from "next/link";
 import { Model, formatContextWindow, formatPrice, formatPriceUnit, getStatusBadge } from "@/lib/data";
+import { defaultLocale, getDictionary, getLocalizedPath, Locale } from "@/lib/i18n";
 
 interface ModelCardProps {
   model: Model;
   providerSlug: string;
   providerColor: string;
+  locale?: Locale;
 }
 
-export function ModelCard({ model, providerSlug, providerColor }: ModelCardProps) {
-  const status = getStatusBadge(model.status);
+export function ModelCard({
+  model,
+  providerSlug,
+  providerColor,
+  locale = defaultLocale,
+}: ModelCardProps) {
+  const status = getStatusBadge(model.status, locale);
+  const t = getDictionary(locale).common;
 
   return (
     <Link
-      href={`/${providerSlug}/${model.id}`}
+      href={getLocalizedPath(locale, `/${providerSlug}/${model.id}`)}
       className="group block rounded-lg border border-border/50 bg-card p-4 transition-all hover:border-border hover:shadow-md"
     >
       <div className="flex items-start justify-between mb-2">
@@ -26,15 +34,15 @@ export function ModelCard({ model, providerSlug, providerColor }: ModelCardProps
       <p className="text-sm text-muted-foreground mb-3 line-clamp-2">{model.description}</p>
       <div className="flex flex-wrap gap-3 text-xs text-muted-foreground">
         <div>
-          <span className="font-medium text-foreground/70">Context:</span>{" "}
+          <span className="font-medium text-foreground/70">{t.context}:</span>{" "}
           {formatContextWindow(model.contextWindow)}
         </div>
         <div>
-          <span className="font-medium text-foreground/70">Input:</span>{" "}
+          <span className="font-medium text-foreground/70">{t.input}:</span>{" "}
           {formatPrice(model.pricing.input)}/{formatPriceUnit(model.pricing)}
         </div>
         <div>
-          <span className="font-medium text-foreground/70">Output:</span>{" "}
+          <span className="font-medium text-foreground/70">{t.output}:</span>{" "}
           {formatPrice(model.pricing.output)}/{formatPriceUnit(model.pricing)}
         </div>
       </div>

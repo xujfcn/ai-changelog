@@ -2,10 +2,12 @@
 
 import { useState, useMemo } from "react";
 import { FlatChangelogEntry, getAllProviders } from "@/lib/data";
+import { defaultLocale, getDictionary, Locale } from "@/lib/i18n";
 import { Timeline } from "./timeline";
 
 interface FilterableTimelineProps {
   entries: FlatChangelogEntry[];
+  locale?: Locale;
   showProviderFilter?: boolean;
   showTypeFilter?: boolean;
   showSearch?: boolean;
@@ -13,6 +15,7 @@ interface FilterableTimelineProps {
 
 export function FilterableTimeline({
   entries,
+  locale = defaultLocale,
   showProviderFilter = true,
   showTypeFilter = true,
   showSearch = true,
@@ -22,12 +25,13 @@ export function FilterableTimeline({
   const [search, setSearch] = useState("");
 
   const providers = getAllProviders();
+  const t = getDictionary(locale).common;
   const changeTypes = [
-    { value: "all", label: "All Types" },
-    { value: "release", label: "New Releases" },
-    { value: "update", label: "Updates" },
-    { value: "pricing", label: "Pricing Changes" },
-    { value: "deprecation", label: "Deprecations" },
+    { value: "all", label: t.allTypes },
+    { value: "release", label: t.newReleases },
+    { value: "update", label: t.updates },
+    { value: "pricing", label: t.pricingChanges },
+    { value: "deprecation", label: t.deprecations },
   ];
 
   const filtered = useMemo(() => {
@@ -52,7 +56,7 @@ export function FilterableTimeline({
         {showSearch && (
           <input
             type="text"
-            placeholder="Search models, updates..."
+            placeholder={t.searchPlaceholder}
             className="flex-1 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -64,7 +68,7 @@ export function FilterableTimeline({
             value={providerFilter}
             onChange={(e) => setProviderFilter(e.target.value)}
           >
-            <option value="all">All Providers</option>
+            <option value="all">{t.allProviders}</option>
             {providers.map((p) => (
               <option key={p.provider} value={p.provider}>
                 {p.displayName}
@@ -88,11 +92,11 @@ export function FilterableTimeline({
       </div>
       {filtered.length === 0 ? (
         <div className="text-center py-12 text-muted-foreground">
-          <p className="text-lg">No results found</p>
-          <p className="text-sm mt-1">Try adjusting your filters or search query</p>
+          <p className="text-lg">{t.noResults}</p>
+          <p className="text-sm mt-1">{t.adjustFilters}</p>
         </div>
       ) : (
-        <Timeline entries={filtered} />
+        <Timeline entries={filtered} locale={locale} />
       )}
     </div>
   );

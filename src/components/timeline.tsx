@@ -1,8 +1,15 @@
 import Link from "next/link";
 import { FlatChangelogEntry, formatDate, getChangeTypeBadge } from "@/lib/data";
+import { defaultLocale, getLocalizedPath, Locale } from "@/lib/i18n";
 
-export function TimelineEntry({ entry }: { entry: FlatChangelogEntry }) {
-  const badge = getChangeTypeBadge(entry.type);
+export function TimelineEntry({
+  entry,
+  locale = defaultLocale,
+}: {
+  entry: FlatChangelogEntry;
+  locale?: Locale;
+}) {
+  const badge = getChangeTypeBadge(entry.type, locale);
 
   return (
     <div className="relative pl-8 pb-8 last:pb-0">
@@ -15,14 +22,14 @@ export function TimelineEntry({ entry }: { entry: FlatChangelogEntry }) {
       />
       <div className="group rounded-lg border border-border/50 bg-card p-4 transition-colors hover:border-border">
         <div className="flex flex-wrap items-center gap-2 mb-2">
-          <span className="text-xs text-muted-foreground">{formatDate(entry.date)}</span>
+          <span className="text-xs text-muted-foreground">{formatDate(entry.date, locale)}</span>
           <span
             className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold ${badge.className}`}
           >
             {badge.label}
           </span>
           <Link
-            href={`/${entry.providerSlug}`}
+            href={getLocalizedPath(locale, `/${entry.providerSlug}`)}
             className="text-xs font-medium hover:underline"
             style={{ color: entry.providerColor }}
           >
@@ -30,7 +37,7 @@ export function TimelineEntry({ entry }: { entry: FlatChangelogEntry }) {
           </Link>
         </div>
         <Link
-          href={`/${entry.providerSlug}/${entry.modelId}`}
+          href={getLocalizedPath(locale, `/${entry.providerSlug}/${entry.modelId}`)}
           className="font-semibold text-foreground hover:underline"
         >
           {entry.modelName}
@@ -41,11 +48,17 @@ export function TimelineEntry({ entry }: { entry: FlatChangelogEntry }) {
   );
 }
 
-export function Timeline({ entries }: { entries: FlatChangelogEntry[] }) {
+export function Timeline({
+  entries,
+  locale = defaultLocale,
+}: {
+  entries: FlatChangelogEntry[];
+  locale?: Locale;
+}) {
   return (
     <div className="relative">
       {entries.map((entry, i) => (
-        <TimelineEntry key={`${entry.modelId}-${entry.date}-${i}`} entry={entry} />
+        <TimelineEntry key={`${entry.modelId}-${entry.date}-${i}`} entry={entry} locale={locale} />
       ))}
     </div>
   );

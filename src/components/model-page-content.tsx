@@ -1,60 +1,32 @@
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import {
-  getAllProviders,
-  getModel,
   formatContextWindow,
+  formatDate,
   formatPrice,
   formatPriceUnit,
-  formatDate,
-  getStatusBadge,
   getChangeTypeBadge,
+  getModel,
+  getStatusBadge,
 } from "@/lib/data";
+import { defaultLocale, getDictionary, getLocalizedPath, Locale } from "@/lib/i18n";
 
-export function generateStaticParams() {
-  const params: { provider: string; model: string }[] = [];
-  for (const provider of getAllProviders()) {
-    for (const model of provider.models) {
-      params.push({ provider: provider.provider, model: model.id });
-    }
-  }
-  return params;
-}
-
-export async function generateMetadata({
-  params,
+export function ModelPageContent({
+  providerSlug,
+  modelId,
+  locale = defaultLocale,
 }: {
-  params: Promise<{ provider: string; model: string }>;
-}): Promise<Metadata> {
-  const { provider: provSlug, model: modelId } = await params;
-  const result = getModel(provSlug, modelId);
-  if (!result) return {};
-
-  const { provider, model } = result;
-  const priceUnit = formatPriceUnit(model.pricing);
-  return {
-    title: `${model.name} Changelog — ${provider.displayName} Model Version History`,
-    description: `${model.name} version history, pricing, and updates. Context window: ${formatContextWindow(model.contextWindow)}. Status: ${model.status}. Input: ${formatPrice(model.pricing.input)}/${priceUnit} tokens. Output: ${formatPrice(model.pricing.output)}/${priceUnit} tokens.`,
-    openGraph: {
-      title: `${model.name} — AI Model Changelog`,
-      description: `Track ${model.name} updates, pricing changes, and version history.`,
-    },
-  };
-}
-
-export default async function ModelPage({
-  params,
-}: {
-  params: Promise<{ provider: string; model: string }>;
+  providerSlug: string;
+  modelId: string;
+  locale?: Locale;
 }) {
-  const { provider: provSlug, model: modelId } = await params;
-  const result = getModel(provSlug, modelId);
+  const result = getModel(providerSlug, modelId);
   if (!result) notFound();
 
   const { provider, model } = result;
-  const status = getStatusBadge(model.status);
+  const status = getStatusBadge(model.status, locale);
   const priceUnit = formatPriceUnit(model.pricing);
+  const t = getDictionary(locale);
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -66,7 +38,9 @@ export default async function ModelPage({
       "@type": "Offer",
       price: model.pricing.input ?? 0,
       priceCurrency: "USD",
-      description: model.pricing.note || `Per ${priceUnit} input tokens. Output: ${formatPrice(model.pricing.output)}/${priceUnit} tokens.`,
+      description:
+        model.pricing.note ||
+        `Per ${priceUnit} input tokens. Output: ${formatPrice(model.pricing.output)}/${priceUnit} tokens.`,
     },
     author: {
       "@type": "Organization",
@@ -83,24 +57,21 @@ export default async function ModelPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <div className="container mx-auto max-w-6xl px-4 py-8">
-        {/* Breadcrumb */}
         <nav className="mb-6 text-sm text-muted-foreground">
-          <Link href="/" className="hover:text-foreground">Home</Link>
+          <Link href={getLocalizedPath(locale)} className="hover:text-foreground">
+            {t.common.home}
+          </Link>
           {" / "}
-          <Link href={`/${provider.provider}`} className="hover:text-foreground">
+          <Link href={getLocalizedPath(locale, `/${provider.provider}`)} className="hover:text-foreground">
             {provider.displayName}
           </Link>
           {" / "}
           <span className="text-foreground">{model.name}</span>
         </nav>
 
-        {/* Header */}
         <div className="mb-8">
           <div className="flex flex-wrap items-center gap-3 mb-2">
-            <div
-              className="h-6 w-6 rounded-md"
-              style={{ backgroundColor: provider.color }}
-            />
+            <div className="h-6 w-6 rounded-md" style={{ backgroundColor: provider.color }} />
             <h1 className="text-3xl md:text-4xl font-bold">{model.name}</h1>
             <span
               className={`inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold ${status.className}`}
@@ -111,30 +82,34 @@ export default async function ModelPage({
           <p className="text-lg text-muted-foreground">{model.description}</p>
         </div>
 
-        {/* Info Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           <div className="rounded-lg border border-border/50 bg-card p-4">
-            <div className="text-sm text-muted-foreground mb-1">Context Window</div>
+            <div className="text-sm text-muted-foreground mb-1">{t.common.contextWindow}</div>
             <div className="text-xl font-bold">{formatContextWindow(model.contextWindow)}</div>
           </div>
           <div className="rounded-lg border border-border/50 bg-card p-4">
-            <div className="text-sm text-muted-foreground mb-1">Input Price</div>
-            <div className="text-xl font-bold">{formatPrice(model.pricing.input)}<span className="text-sm font-normal text-muted-foreground">/{priceUnit}</span></div>
+            <div className="text-sm text-muted-foreground mb-1">{t.common.inputPrice}</div>
+            <div className="text-xl font-bold">
+              {formatPrice(model.pricing.input)}
+              <span className="text-sm font-normal text-muted-foreground">/{priceUnit}</span>
+            </div>
             {model.pricing.note && <div className="mt-1 text-xs text-muted-foreground">{model.pricing.note}</div>}
           </div>
           <div className="rounded-lg border border-border/50 bg-card p-4">
-            <div className="text-sm text-muted-foreground mb-1">Output Price</div>
-            <div className="text-xl font-bold">{formatPrice(model.pricing.output)}<span className="text-sm font-normal text-muted-foreground">/{priceUnit}</span></div>
+            <div className="text-sm text-muted-foreground mb-1">{t.common.outputPrice}</div>
+            <div className="text-xl font-bold">
+              {formatPrice(model.pricing.output)}
+              <span className="text-sm font-normal text-muted-foreground">/{priceUnit}</span>
+            </div>
           </div>
           <div className="rounded-lg border border-border/50 bg-card p-4">
-            <div className="text-sm text-muted-foreground mb-1">Released</div>
-            <div className="text-xl font-bold">{formatDate(model.releaseDate)}</div>
+            <div className="text-sm text-muted-foreground mb-1">{t.common.released}</div>
+            <div className="text-xl font-bold">{formatDate(model.releaseDate, locale)}</div>
           </div>
         </div>
 
-        {/* Capabilities */}
         <div className="mb-8">
-          <h2 className="text-lg font-bold mb-3">Capabilities</h2>
+          <h2 className="text-lg font-bold mb-3">{t.common.capabilities}</h2>
           <div className="flex flex-wrap gap-2">
             {model.capabilities.map((cap) => (
               <span
@@ -147,43 +122,37 @@ export default async function ModelPage({
           </div>
         </div>
 
-        {/* Deprecation notice */}
         {model.status === "deprecated" && model.deprecationDate && (
           <div className="mb-8 rounded-lg border border-yellow-500/30 bg-yellow-500/5 p-4">
-            <p className="text-yellow-400 font-semibold">⚠️ This model was deprecated on {formatDate(model.deprecationDate)}</p>
+            <p className="text-yellow-400 font-semibold">
+              ⚠️ {t.model.deprecatedNotice(formatDate(model.deprecationDate, locale))}
+            </p>
             <p className="text-sm text-muted-foreground mt-1">
-              Consider migrating to a newer model from {provider.displayName}.
+              {t.model.migrateNotice(provider.displayName)}
             </p>
           </div>
         )}
 
-        {/* CTA */}
         <div className="mb-8 rounded-lg border border-border/50 bg-card p-6 text-center">
-          <h3 className="text-lg font-semibold mb-2">Try {model.name} via Crazyrouter API</h3>
-          <p className="text-sm text-muted-foreground mb-4">
-            Access {model.name} and 100+ other AI models with a single API key.
-          </p>
+          <h3 className="text-lg font-semibold mb-2">{t.model.tryViaApi(model.name)}</h3>
+          <p className="text-sm text-muted-foreground mb-4">{t.model.apiBody(model.name)}</p>
           <a
             href={`https://crazyrouter.com?utm_source=aichangelog&utm_medium=model&utm_campaign=${model.id}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
           >
-            Get API Access →
+            {t.common.getApiAccess} →
           </a>
         </div>
 
-        {/* Version History */}
         <section>
-          <h2 className="text-xl font-bold mb-4">Version History</h2>
+          <h2 className="text-xl font-bold mb-4">{t.model.versionHistory}</h2>
           <div className="relative">
             {[...model.changelog]
-              .sort(
-                (a, b) =>
-                  new Date(b.date).getTime() - new Date(a.date).getTime()
-              )
+              .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
               .map((entry, i) => {
-                const badge = getChangeTypeBadge(entry.type);
+                const badge = getChangeTypeBadge(entry.type, locale);
                 return (
                   <div key={`${entry.date}-${i}`} className="relative pl-8 pb-8 last:pb-0">
                     <div className="absolute left-3 top-0 h-full w-px bg-border" />
@@ -193,9 +162,7 @@ export default async function ModelPage({
                     />
                     <div className="rounded-lg border border-border/50 bg-card p-4">
                       <div className="flex flex-wrap items-center gap-2 mb-1">
-                        <span className="text-xs text-muted-foreground">
-                          {formatDate(entry.date)}
-                        </span>
+                        <span className="text-xs text-muted-foreground">{formatDate(entry.date, locale)}</span>
                         <span
                           className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold ${badge.className}`}
                         >
