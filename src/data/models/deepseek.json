@@ -5,17 +5,33 @@
   "website": "https://deepseek.com",
   "models": [
     {
+      "id": "deepseek-v4-1-flash",
+      "name": "DeepSeek V4.1 Flash",
+      "status": "active",
+      "contextWindow": 1000000,
+      "releaseDate": "2026-09-10",
+      "description": "Smallest model of DeepSeek's new architecture family with native multimodal visual understanding, served under the deepseek-flash API name",
+      "pricing": { "input": 0.30, "output": 1.20, "note": "Peak-hour rate; off-peak (weekends and outside 01:00-04:00 and 06:00-10:00 UTC weekdays) is 50% lower" },
+      "capabilities": ["text", "vision", "code", "reasoning", "function-calling"],
+      "changelog": [
+        { "date": "2026-09-10", "type": "release", "description": "DeepSeek V4.1 Flash released with a 1M context window, up to 384K output, native vision, and support for both thinking and non-thinking modes; call it via the deepseek-flash model name" },
+        { "date": "2026-09-10", "type": "pricing", "description": "API pricing reduced to $0.30 per 1M input tokens and $1.20 per 1M output tokens at peak hours ($0.15 and $0.60 off-peak); cache hits $0.006 per 1M tokens" }
+      ]
+    },
+    {
       "id": "v3-2",
       "name": "DeepSeek V3.2",
-      "status": "active",
+      "status": "deprecated",
       "contextWindow": 128000,
       "releaseDate": "2026-02-01",
       "description": "Latest DeepSeek V3 iteration with improved MoE architecture",
       "pricing": { "input": 0.27, "output": 1.10 },
       "capabilities": ["text", "code", "function-calling"],
       "changelog": [
-        { "date": "2026-02-01", "type": "release", "description": "DeepSeek V3.2 released with improved reasoning and efficiency" }
-      ]
+        { "date": "2026-02-01", "type": "release", "description": "DeepSeek V3.2 released with improved reasoning and efficiency" },
+        { "date": "2026-07-24", "type": "deprecation", "description": "The deepseek-chat and deepseek-reasoner API names were fully retired on July 24, 2026; use deepseek-flash or deepseek-v4-pro instead" }
+      ],
+      "deprecationDate": "2026-07-24"
     },
     {
       "id": "deepseek-v4-pro-preview",
@@ -24,27 +40,35 @@
       "contextWindow": 1000000,
       "releaseDate": "2026-04-24",
       "description": "DeepSeek's next-generation general-purpose model with stronger reasoning, coding, and tool use",
-      "pricing": { "input": 0.50, "output": 1.50 },
+      "pricing": { "input": 1.32, "output": 3.96, "note": "Peak-hour rate; off-peak (weekends and outside 01:00-04:00 and 06:00-10:00 UTC weekdays) is 50% lower" },
       "capabilities": ["text", "code", "reasoning", "function-calling"],
       "changelog": [
         { "date": "2026-04-24", "type": "release", "description": "DeepSeek V4 Pro released for API access with stronger reasoning, coding, and tool-use performance" },
-        { "date": "2026-04-24", "type": "pricing", "description": "Promotional API pricing listed at $0.50 per 1M input tokens and $1.50 per 1M output tokens" }
+        { "date": "2026-04-24", "type": "pricing", "description": "Promotional API pricing listed at $0.50 per 1M input tokens and $1.50 per 1M output tokens" },
+        { "date": "2026-08-13", "type": "update", "description": "DeepSeek V4 Pro reached general availability as build 0813 with 1.6T total / 49B active parameters, 1M context, up to 384K output, low/high/max thinking effort, and native Responses API support" },
+        { "date": "2026-08-13", "type": "pricing", "description": "Peak/off-peak API pricing introduced from August 16, 2026: $1.32 per 1M input tokens and $3.96 per 1M output tokens at peak hours, half that off-peak" },
+        { "date": "2026-09-10", "type": "update", "description": "Planned routing of V4 Pro requests to V4.1 Flash after September 14, 2026 was reversed; V4 Pro remains on the API with unchanged billing" }
       ]
     },
     {
       "id": "deepseek-v4-flash-preview",
       "name": "DeepSeek V4 Flash",
-      "status": "active",
+      "status": "deprecated",
       "contextWindow": 1000000,
       "releaseDate": "2026-04-24",
-      "description": "Lower-latency DeepSeek V4 model for high-throughput chat, coding, and agent workloads",
+      "description": "Lower-latency DeepSeek V4 model for high-throughput chat, coding, and agent workloads; retired in favor of V4.1 Flash",
       "pricing": { "input": 0.14, "output": 0.28 },
       "capabilities": ["text", "code", "function-calling"],
       "changelog": [
         { "date": "2026-04-24", "type": "release", "description": "DeepSeek V4 Flash released alongside V4 Pro for faster and lower-cost API workloads" },
         { "date": "2026-04-24", "type": "pricing", "description": "Pricing set at $0.14 per 1M input tokens and $0.28 per 1M output tokens" },
-        { "date": "2026-05-15", "type": "deprecation", "description": "DeepSeek scheduled deepseek-chat and deepseek-reasoner compatibility aliases for retirement on June 15, 2026" }
-      ]
+        { "date": "2026-05-15", "type": "deprecation", "description": "DeepSeek scheduled deepseek-chat and deepseek-reasoner compatibility aliases for retirement on June 15, 2026" },
+        { "date": "2026-07-24", "type": "deprecation", "description": "Legacy deepseek-chat and deepseek-reasoner API names, which had pointed to V4 Flash, were discontinued on July 24, 2026" },
+        { "date": "2026-07-31", "type": "update", "description": "DeepSeek V4 Flash official release (build 0731) entered public beta with open weights under the MIT license, re-post-trained on the same architecture with much stronger agent benchmarks" },
+        { "date": "2026-08-21", "type": "update", "description": "Experimental multimodal variant DeepSeek-V4-Flash-Vision-Exp released on the API" },
+        { "date": "2026-09-10", "type": "deprecation", "description": "V4 Flash and V4 Flash Vision Exp retired on September 10, 2026; the deepseek-v4-flash and deepseek-v4-flash-vision-exp names are temporarily routed to V4.1 Flash" }
+      ],
+      "deprecationDate": "2026-09-10"
     },
     {
       "id": "v3-1",

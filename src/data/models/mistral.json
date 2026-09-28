@@ -5,6 +5,21 @@
   "website": "https://mistral.ai",
   "models": [
     {
+      "id": "mistral-ocr-4",
+      "name": "Mistral OCR 4",
+      "status": "active",
+      "contextWindow": 128000,
+      "releaseDate": "2026-06-23",
+      "description": "Document understanding and OCR model with paragraph-level block extraction and confidence scores; mistral-ocr-latest points to the newest OCR 4.x build",
+      "pricing": { "input": null, "output": null, "note": "Billed per page" },
+      "capabilities": ["vision", "text", "retrieval"],
+      "changelog": [
+        { "date": "2026-06-23", "type": "release", "description": "Mistral OCR 4 (mistral-ocr-4-0) released with the new include_blocks option returning paragraph-level bounding boxes and structural labels" },
+        { "date": "2026-07-16", "type": "update", "description": "Mistral OCR 4.1 (mistral-ocr-4-1) released; mistral-ocr-latest and mistral-ocr-4 now point to it, and confidence scores gained block-level granularity" },
+        { "date": "2026-08-31", "type": "update", "description": "Mistral OCR 4.1 reached general availability" }
+      ]
+    },
+    {
       "id": "mistral-medium-3-5",
       "name": "Mistral Medium 3.5",
       "status": "active",
@@ -56,7 +71,9 @@
       "pricing": { "input": 0.20, "output": 0.60 },
       "capabilities": ["text", "code", "reasoning", "formal-methods"],
       "changelog": [
-        { "date": "2026-03-19", "type": "release", "description": "Leanstral released for formal mathematics and Lean-assisted reasoning tasks" }
+        { "date": "2026-03-19", "type": "release", "description": "Leanstral released for formal mathematics and Lean-assisted reasoning tasks" },
+        { "date": "2026-06-30", "type": "update", "description": "Leanstral 1.5 (labs-leanstral-1-5) released with improved SFT mixture quality and extended long-context reasoning for Lean 4 proof engineering" },
+        { "date": "2026-06-30", "type": "deprecation", "description": "The Leanstral 1.5 labs model is scheduled for retirement on September 30, 2026" }
       ]
     },
     {
