@@ -11,6 +11,7 @@ import {
 } from "@/lib/data";
 import { defaultLocale, getDictionary, getLocalizedPath, Locale } from "@/lib/i18n";
 import { localizeCapability, localizeModelForDisplay } from "@/lib/localized-content";
+import { apiModel, apiSnapshot, apiText, crazyrouterLink } from "@/lib/crazyrouter";
 
 export function ModelPageContent({
   providerSlug,
@@ -29,6 +30,8 @@ export function ModelPageContent({
   const status = getStatusBadge(model.status, locale);
   const priceUnit = formatPriceUnit(model.pricing);
   const t = getDictionary(locale);
+  const api = model.status !== "deprecated" ? apiModel(model.id) : undefined;
+  const access = apiText[locale];
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -36,14 +39,14 @@ export function ModelPageContent({
     name: model.name,
     applicationCategory: "AI Model",
     operatingSystem: "Cloud",
-    offers: {
+    ...(model.pricing.input !== null ? { offers: {
       "@type": "Offer",
-      price: model.pricing.input ?? 0,
+      price: model.pricing.input,
       priceCurrency: "USD",
       description:
         model.pricing.note ||
         `Per ${priceUnit} input tokens. Output: ${formatPrice(model.pricing.output)}/${priceUnit} tokens.`,
-    },
+    } } : {}),
     author: {
       "@type": "Organization",
       name: provider.displayName,
@@ -84,6 +87,7 @@ export function ModelPageContent({
           <p className="text-lg text-muted-foreground">{model.description}</p>
         </div>
 
+        <h2 className="mb-3 text-sm font-semibold">{access.vendorPrices}</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           <div className="rounded-lg border border-border/50 bg-card p-4">
             <div className="text-sm text-muted-foreground mb-1">{t.common.contextWindow}</div>
@@ -136,16 +140,19 @@ export function ModelPageContent({
         )}
 
         <div className="mb-8 rounded-lg border border-border/50 bg-card p-6 text-center">
-          <h3 className="text-lg font-semibold mb-2">{t.model.tryViaApi(model.name)}</h3>
-          <p className="text-sm text-muted-foreground mb-4">{t.model.apiBody(model.name)}</p>
+          <h3 className="text-lg font-semibold mb-2">{access.catalogue}</h3>
+          <p className="text-sm text-muted-foreground mb-4">{api ? `${access.prices}: $${api.input} / $${api.output}` : access.unavailable}</p>
+          <p className="text-xs text-muted-foreground mb-4">{access.checked}: {apiSnapshot.observedAt}. {access.note}</p>
           <a
-            href={`https://crazyrouter.com?utm_source=aichangelog&utm_medium=model&utm_campaign=${model.id}`}
+            href={crazyrouterLink(locale, `/${locale}/pricing`, model.id, "api_cta")}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
           >
             {t.common.getApiAccess} →
           </a>
+          <Link href={getLocalizedPath(locale, "/api-models")} className="ml-4 inline-block text-sm">{access.title}</Link>
+          {api && <pre className="mt-6 overflow-x-auto text-left text-xs"><code>{`curl https://crazyrouter.com/v1/chat/completions \\\n  -H "Authorization: Bearer $CRAZYROUTER_API_KEY" \\\n  -H "Content-Type: application/json" \\\n  -d '{"model":"${api.model}","messages":[{"role":"user","content":"Hello"}],"max_tokens":64}'`}</code></pre>}
         </div>
 
         <section>

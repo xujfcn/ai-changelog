@@ -2,7 +2,7 @@ import { getAllChangelog } from "@/lib/data";
 
 export async function GET() {
   const entries = getAllChangelog();
-  const baseUrl = "https://aichangelog.com";
+  const baseUrl = "https://aichangelog.dev";
 
   const items = entries.slice(0, 50).map((entry) => {
     const link = `${baseUrl}/${entry.providerSlug}/${entry.modelId}`;

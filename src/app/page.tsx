@@ -153,7 +153,7 @@ export function HomePageContent({ locale = defaultLocale }: { locale?: Locale })
             {t.home.ctaBody}
           </p>
           <a
-            href="https://crazyrouter.com?utm_source=aichangelog&utm_medium=homepage&utm_campaign=cta"
+            href={`https://crazyrouter.com/${locale}/pricing?utm_source=aichangelog&utm_medium=homepage&utm_campaign=cta&utm_content=homepage_cta__${locale}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"

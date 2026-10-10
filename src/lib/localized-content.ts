@@ -3,6 +3,20 @@ import { defaultLocale, Locale } from "@/lib/i18n";
 
 const capabilityLabels: Record<Locale, Record<string, string>> = {
   en: {},
+  ko: {
+    audio: "오디오", classification: "분류", code: "코드", embeddings: "임베딩",
+    "extended-thinking": "확장 사고", "fill-in-middle": "코드 완성", "formal-methods": "형식 기법",
+    "function-calling": "함수 호출", "json-mode": "JSON 모드", multilingual: "다국어", personalization: "개인화",
+    reasoning: "추론", realtime: "실시간", retrieval: "검색", security: "보안", speech: "음성", text: "텍스트",
+    "text-to-speech": "음성 합성", thinking: "사고", "tool-use": "도구 사용", video: "동영상", vision: "시각", "web-search": "웹 검색",
+  },
+  pt: {
+    audio: "áudio", classification: "classificação", code: "código", embeddings: "embeddings",
+    "extended-thinking": "raciocínio estendido", "fill-in-middle": "completar código", "formal-methods": "métodos formais",
+    "function-calling": "chamada de funções", "json-mode": "modo JSON", multilingual: "multilíngue", personalization: "personalização",
+    reasoning: "raciocínio", realtime: "tempo real", retrieval: "recuperação", security: "segurança", speech: "fala", text: "texto",
+    "text-to-speech": "síntese de fala", thinking: "raciocínio", "tool-use": "uso de ferramentas", video: "vídeo", vision: "visão", "web-search": "busca na web",
+  },
   zh: {
     audio: "音频",
     classification: "分类",
@@ -96,9 +110,13 @@ export function getLocalizedModelDescription(
   const capabilities = model.capabilities
     .slice(0, 5)
     .map((capability) => localizeCapability(capability, locale))
-    .join(locale === "ru" ? ", " : "、");
+    .join(["ru", "ko", "pt"].includes(locale) ? ", " : "、");
 
   switch (locale) {
+    case "ko":
+      return `${model.name}은 ${providerName}의 AI 모델입니다. 컨텍스트: ${context}. 기능: ${capabilities}.`;
+    case "pt":
+      return `${model.name} é um modelo de IA da ${providerName} com contexto de ${context}. Recursos: ${capabilities}.`;
     case "zh":
       return `${model.name} 是 ${providerName} 的 AI 模型，支持${capabilities}，上下文窗口为 ${context}。适合需要稳定模型能力、价格信息和版本追踪的场景。`;
     case "ru":
@@ -147,6 +165,17 @@ export function localizeChangelogDescription(
 
   const pricing = parsePricing(entry.description);
   const date = parseDate(entry.description);
+
+  if (locale === "ko") {
+    if (pricing) return `${modelName} API 요금: 입력 ${pricing.input}/100만 토큰, 출력 ${pricing.output}/100만 토큰.`;
+    const descriptions = { release: "출시 정보가 기록되었습니다.", update: "기능, 제공 상태 또는 버전 정보가 업데이트되었습니다.", pricing: "요금 정보가 업데이트되었습니다.", deprecation: `지원 중단 또는 이전 정보가 업데이트되었습니다.${date ? ` 관련 날짜: ${date}.` : ""}` };
+    return `${modelName}: ${descriptions[entry.type]}`;
+  }
+  if (locale === "pt") {
+    if (pricing) return `${modelName}: entrada ${pricing.input}/1 milhão de tokens; saída ${pricing.output}/1 milhão de tokens.`;
+    const descriptions = { release: "lançamento registrado.", update: "recursos, disponibilidade ou versão atualizados.", pricing: "informações de preço atualizadas.", deprecation: `informações de descontinuação ou migração atualizadas.${date ? ` Data relacionada: ${date}.` : ""}` };
+    return `${modelName}: ${descriptions[entry.type]}`;
+  }
 
   if (pricing) {
     switch (locale) {

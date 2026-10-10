@@ -1,4 +1,6 @@
-export const locales = ["en", "zh", "ru", "ja"] as const;
+import { korean, portuguese } from "./extra-locales";
+
+export const locales = ["en", "zh", "ru", "ja", "ko", "pt"] as const;
 
 export type Locale = (typeof locales)[number];
 
@@ -9,9 +11,11 @@ export const localeLabels: Record<Locale, string> = {
   zh: "中文",
   ru: "Русский",
   ja: "日本語",
+  ko: "한국어",
+  pt: "Português",
 };
 
-type Dictionary = {
+export type Dictionary = {
   common: {
     siteShortName: string;
     home: string;
@@ -113,6 +117,8 @@ type Dictionary = {
 };
 
 export const dictionaries: Record<Locale, Dictionary> = {
+  ko: korean,
+  pt: portuguese,
   en: {
     common: {
       siteShortName: "AI Changelog",
@@ -532,7 +538,7 @@ export function getLocalizedPath(locale: Locale, path = "/"): string {
 
 export function getLanguageAlternates(path = "/"): Record<string, string> {
   return Object.fromEntries(
-    locales.map((locale) => [getHtmlLang(locale), getLocalizedPath(locale, path)])
+    [...locales.map((locale) => [getHtmlLang(locale), getLocalizedPath(locale, path)]), ["x-default", getLocalizedPath(defaultLocale, path)]]
   );
 }
 
@@ -552,6 +558,10 @@ export function getHtmlLang(locale: Locale): string {
       return "ru";
     case "ja":
       return "ja";
+    case "ko":
+      return "ko";
+    case "pt":
+      return "pt-BR";
     default:
       return "en";
   }
@@ -565,6 +575,10 @@ export function getOgLocale(locale: Locale): string {
       return "ru_RU";
     case "ja":
       return "ja_JP";
+    case "ko":
+      return "ko_KR";
+    case "pt":
+      return "pt_BR";
     default:
       return "en_US";
   }

@@ -24,10 +24,10 @@ export function Header({ locale = defaultLocale }: { locale?: Locale }) {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-14 max-w-6xl items-center px-4">
-        <Link href={getLocalizedPath(locale)} className="mr-6 flex items-center space-x-2">
+        <Link href={getLocalizedPath(locale)} className="mr-4 shrink-0 flex items-center space-x-2">
           <span className="text-lg font-bold">📋 {t.siteShortName}</span>
         </Link>
-        <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
+        <nav className="hidden lg:flex items-center space-x-4 text-sm font-medium">
           {providers.map((p) => (
             <Link
               key={p.provider}
@@ -63,7 +63,7 @@ export function Header({ locale = defaultLocale }: { locale?: Locale }) {
           ))}
         </select>
         <button
-          className="ml-2 md:hidden p-2"
+          className="ml-2 lg:hidden p-2"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
@@ -77,7 +77,7 @@ export function Header({ locale = defaultLocale }: { locale?: Locale }) {
         </button>
       </div>
       {mobileOpen && (
-        <div className="md:hidden border-t border-border/40 bg-background">
+        <div className="lg:hidden border-t border-border/40 bg-background">
           <nav className="container mx-auto max-w-6xl px-4 py-4 flex flex-col space-y-3">
             {providers.map((p) => (
               <Link

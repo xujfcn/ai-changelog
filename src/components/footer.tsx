@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getAllProviders } from "@/lib/data";
 import { defaultLocale, getDictionary, getLocalizedPath, Locale } from "@/lib/i18n";
+import { apiText, crazyrouterLink } from "@/lib/crazyrouter";
 
 export function Footer({ locale = defaultLocale }: { locale?: Locale }) {
   const providers = getAllProviders();
@@ -37,6 +38,9 @@ export function Footer({ locale = defaultLocale }: { locale?: Locale }) {
             <h3 className="font-semibold text-sm mb-3">{t.common.resources}</h3>
             <ul className="space-y-2">
               <li>
+                <Link href={getLocalizedPath(locale, "/api-models")} className="text-sm text-muted-foreground hover:text-foreground">{apiText[locale].title}</Link>
+              </li>
+              <li>
                 <Link
                   href={getLocalizedPath(locale, "/changelog")}
                   className="text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -67,7 +71,7 @@ export function Footer({ locale = defaultLocale }: { locale?: Locale }) {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="https://crazyrouter.com?utm_source=aichangelog&utm_medium=footer&utm_campaign=seo"
+                  href={crazyrouterLink(locale, `/${locale}/pricing`, "seo", "footer_api")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -85,7 +89,7 @@ export function Footer({ locale = defaultLocale }: { locale?: Locale }) {
           <p className="text-sm text-muted-foreground">
             {t.common.poweredBy}{" "}
             <a
-              href="https://crazyrouter.com?utm_source=aichangelog&utm_medium=footer&utm_campaign=seo"
+              href={crazyrouterLink(locale, `/${locale}/pricing`, "seo", "footer_powered_by")}
               target="_blank"
               rel="noopener noreferrer"
               className="font-medium text-foreground hover:underline"

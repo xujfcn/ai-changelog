@@ -1,0 +1,1064 @@
+{
+  "observedAt": "2026-10-10T14:22:39+00:00",
+  "source": "https://crazyrouter.com/api/pricing",
+  "models": [
+    {
+      "model": "MiniMax-M2.5",
+      "input": 0.3,
+      "output": 1.2,
+      "cachedInput": null,
+      "discount": 1,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "MiniMax-M2.7",
+      "input": 0.3,
+      "output": 1.2,
+      "cachedInput": 0.06,
+      "discount": 1,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "MiniMax-M3",
+      "input": 0.3,
+      "output": 1.2,
+      "cachedInput": null,
+      "discount": 1,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "claude-fable-5",
+      "input": 6.5,
+      "output": 32.5,
+      "cachedInput": 0.65,
+      "discount": 0.65,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "input": 0.65,
+      "output": 3.25,
+      "cachedInput": 0.065,
+      "discount": 0.65,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "input": 0.1,
+      "output": 0.5,
+      "cachedInput": 0.01,
+      "discount": 1,
+      "billingMode": "tiered_expr",
+      "tiers": [
+        {
+          "name": "0_100k",
+          "inputTokensAbove": null,
+          "inputTokensAtMost": 100000,
+          "input": 0.1,
+          "cachedInput": 0.01,
+          "cacheWrite": 0.125,
+          "cacheWrite1h": 0.2,
+          "output": 0.5
+        },
+        {
+          "name": "100k_plus",
+          "inputTokensAbove": 100000,
+          "inputTokensAtMost": null,
+          "input": 0.5,
+          "cachedInput": 0.05,
+          "cacheWrite": 0.625,
+          "cacheWrite1h": 1.0,
+          "output": 2.5
+        }
+      ],
+      "billingExpression": "len <= 100000 ? tier(\"0_100k\", p * 0.1 + cr * 0.01 + cc * 0.125 + cc1h * 0.2 + c * 0.5) : tier(\"100k_plus\", p * 0.5 + cr * 0.05 + cc * 0.625 + cc1h * 1 + c * 2.5)"
+    },
+    {
+      "model": "claude-opus-4-5",
+      "input": 3.25,
+      "output": 16.25,
+      "cachedInput": 0.325,
+      "discount": 0.65,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "claude-opus-4-6",
+      "input": 3.25,
+      "output": 16.25,
+      "cachedInput": 0.325,
+      "discount": 0.65,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "claude-opus-4-7",
+      "input": 3.25,
+      "output": 16.25,
+      "cachedInput": 0.325,
+      "discount": 0.65,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "claude-opus-4-8",
+      "input": 3.25,
+      "output": 16.25,
+      "cachedInput": 0.325,
+      "discount": 0.65,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "claude-opus-5",
+      "input": 3.25,
+      "output": 16.25,
+      "cachedInput": 0.325,
+      "discount": 0.65,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "claude-opus-5-5",
+      "input": 4.0,
+      "output": 20.0,
+      "cachedInput": 0.2,
+      "discount": 1,
+      "billingMode": "tiered_expr",
+      "tiers": [
+        {
+          "name": "standard",
+          "inputTokensAbove": null,
+          "inputTokensAtMost": null,
+          "input": 4.0,
+          "cachedInput": 0.2,
+          "cacheWrite": 5.0,
+          "cacheWrite1h": 8.0,
+          "output": 20.0
+        }
+      ],
+      "billingExpression": "tier(\"standard\", p * 4 + cr * 0.2 + cc * 5 + cc1h * 8 + c * 20)"
+    },
+    {
+      "model": "claude-sonnet-4-5",
+      "input": 1.9500000000000002,
+      "output": 9.75,
+      "cachedInput": 0.195,
+      "discount": 0.65,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "input": 1.9500000000000002,
+      "output": 9.75,
+      "cachedInput": 0.19500000000000003,
+      "discount": 0.65,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "input": 2.0,
+      "output": 10.0,
+      "cachedInput": 0.2,
+      "discount": 1,
+      "billingMode": "tiered_expr",
+      "tiers": [
+        {
+          "name": "standard",
+          "inputTokensAbove": null,
+          "inputTokensAtMost": null,
+          "input": 2.0,
+          "cachedInput": 0.2,
+          "cacheWrite": 2.5,
+          "cacheWrite1h": 4.0,
+          "output": 10.0
+        }
+      ],
+      "billingExpression": "tier(\"standard\", p * 2 + cr * 0.2 + cc * 2.5 + cc1h * 4 + c * 10)"
+    },
+    {
+      "model": "doubao-seed-1-6-251015",
+      "input": 0.08,
+      "output": 0.32,
+      "cachedInput": null,
+      "discount": 1,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "doubao-seed-1-6-flash-250615",
+      "input": 0.0214,
+      "output": 0.2143,
+      "cachedInput": null,
+      "discount": 1,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "doubao-seed-1-6-flash-250828",
+      "input": 0.04,
+      "output": 0.4,
+      "cachedInput": null,
+      "discount": 1,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "doubao-seed-1-6-vision-250815",
+      "input": 0.1143,
+      "output": 1.1429,
+      "cachedInput": null,
+      "discount": 1,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "doubao-seed-code-preview-251028",
+      "input": 0.171,
+      "output": 1.143,
+      "cachedInput": null,
+      "discount": 1,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "input": 0.165,
+      "output": 1.3750000000000002,
+      "cachedInput": 0.044000000000000004,
+      "discount": 0.55,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "gemini-2.5-flash-lite",
+      "input": 0.05500000000000001,
+      "output": 0.22000000000000003,
+      "cachedInput": 0.013750000000000002,
+      "discount": 0.55,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "gemini-2.5-pro",
+      "input": 0.6875,
+      "output": 5.5,
+      "cachedInput": 0.17049999999999998,
+      "discount": 0.55,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "gemini-3-flash",
+      "input": 0.165,
+      "output": 1.32,
+      "cachedInput": 0.0165,
+      "discount": 0.55,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "gemini-3.1-flash-lite",
+      "input": 0.1375,
+      "output": 0.8250000000000001,
+      "cachedInput": 0.013750000000000002,
+      "discount": 0.55,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "gemini-3.1-pro",
+      "input": 1.1,
+      "output": 6.6000000000000005,
+      "cachedInput": 0.275,
+      "discount": 0.55,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "gemini-3.5-flash",
+      "input": 1.5,
+      "output": 9.0,
+      "cachedInput": 0.15000000000000002,
+      "discount": 1,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "glm-3-turbo",
+      "input": 0.06300000000000001,
+      "output": 0.06300000000000001,
+      "cachedInput": null,
+      "discount": 0.9,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "glm-5",
+      "input": 1.0,
+      "output": 3.2,
+      "cachedInput": 0.2,
+      "discount": 1,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "glm-5-turbo",
+      "input": 1.2,
+      "output": 4.0,
+      "cachedInput": null,
+      "discount": 1,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "glm-5.1",
+      "input": 1.26,
+      "output": 3.96,
+      "cachedInput": 0.252,
+      "discount": 0.9,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "glm-5.2",
+      "input": 0.8800000000000001,
+      "output": 3.0800000000000005,
+      "cachedInput": 0.22000000000000003,
+      "discount": 0.8,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "glm-5v-turbo",
+      "input": 0.8,
+      "output": 3.5200000000000005,
+      "cachedInput": null,
+      "discount": 1,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "gpt-4.1",
+      "input": 1.3,
+      "output": 5.2,
+      "cachedInput": 0.325,
+      "discount": 0.65,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "gpt-4.1-mini",
+      "input": 0.26,
+      "output": 1.04,
+      "cachedInput": 0.065,
+      "discount": 0.65,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "gpt-4.1-nano",
+      "input": 0.065,
+      "output": 0.26,
+      "cachedInput": 0.0195,
+      "discount": 0.65,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "gpt-4o",
+      "input": 1.625,
+      "output": 6.5,
+      "cachedInput": 0.8125,
+      "discount": 0.65,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "gpt-4o-mini",
+      "input": 0.0975,
+      "output": 0.39,
+      "cachedInput": 0.052,
+      "discount": 0.65,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "gpt-5",
+      "input": 0.8125,
+      "output": 6.5,
+      "cachedInput": 0.0845,
+      "discount": 0.65,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "gpt-5-codex",
+      "input": 0.8125,
+      "output": 6.5,
+      "cachedInput": 0.0845,
+      "discount": 0.65,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "gpt-5-mini",
+      "input": 0.1625,
+      "output": 1.3,
+      "cachedInput": 0.0195,
+      "discount": 0.65,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "gpt-5-nano",
+      "input": 0.0325,
+      "output": 0.26,
+      "cachedInput": 0.0065,
+      "discount": 0.65,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "gpt-5-pro",
+      "input": 15.0,
+      "output": 120.0,
+      "cachedInput": 7.5,
+      "discount": 1,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "gpt-5.1",
+      "input": 0.8125,
+      "output": 6.5,
+      "cachedInput": 0.08125,
+      "discount": 0.65,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "gpt-5.1-codex",
+      "input": 0.8125,
+      "output": 6.5,
+      "cachedInput": 0.08125,
+      "discount": 0.65,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "gpt-5.1-codex-mini",
+      "input": 0.8125,
+      "output": 3.25,
+      "cachedInput": 0.08125,
+      "discount": 0.65,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "gpt-5.2-codex",
+      "input": 1.1375,
+      "output": 9.1,
+      "cachedInput": 0.11374999999999999,
+      "discount": 0.65,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "gpt-5.3-codex",
+      "input": 1.1375,
+      "output": 9.1,
+      "cachedInput": 0.11375,
+      "discount": 0.65,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "gpt-5.4",
+      "input": 1.625,
+      "output": 9.75,
+      "cachedInput": 0.1625,
+      "discount": 0.65,
+      "billingMode": "tiered_expr",
+      "tiers": [
+        {
+          "name": "standard",
+          "inputTokensAbove": null,
+          "inputTokensAtMost": 272000,
+          "input": 1.625,
+          "output": 9.75,
+          "cachedInput": 0.1625
+        },
+        {
+          "name": "long_context",
+          "inputTokensAbove": 272000,
+          "inputTokensAtMost": null,
+          "input": 3.25,
+          "output": 14.625,
+          "cachedInput": 0.325
+        }
+      ],
+      "billingExpression": "len <= 272000 ? tier(\"standard\", p * 2.5 + c * 15 + cr * 0.25) : tier(\"long_context\", p * 5 + c * 22.5 + cr * 0.5)"
+    },
+    {
+      "model": "gpt-5.4-mini",
+      "input": 0.48750000000000004,
+      "output": 2.9250000000000003,
+      "cachedInput": 0.04875000000000001,
+      "discount": 0.65,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "input": 0.13,
+      "output": 1.04,
+      "cachedInput": null,
+      "discount": 0.65,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "gpt-5.4-pro",
+      "input": 30.0,
+      "output": 180.0,
+      "cachedInput": null,
+      "discount": 1,
+      "billingMode": "tiered_expr",
+      "tiers": [
+        {
+          "name": "standard",
+          "inputTokensAbove": null,
+          "inputTokensAtMost": 272000,
+          "input": 30.0,
+          "output": 180.0
+        },
+        {
+          "name": "long_context",
+          "inputTokensAbove": 272000,
+          "inputTokensAtMost": null,
+          "input": 60.0,
+          "output": 270.0
+        }
+      ],
+      "billingExpression": "len <= 272000 ? tier(\"standard\", p * 30 + c * 180) : tier(\"long_context\", p * 60 + c * 270)"
+    },
+    {
+      "model": "gpt-5.5",
+      "input": 3.25,
+      "output": 19.5,
+      "cachedInput": 0.325,
+      "discount": 0.65,
+      "billingMode": "tiered_expr",
+      "tiers": [
+        {
+          "name": "standard",
+          "inputTokensAbove": null,
+          "inputTokensAtMost": 272000,
+          "input": 3.25,
+          "output": 19.5,
+          "cachedInput": 0.325
+        },
+        {
+          "name": "long_context",
+          "inputTokensAbove": 272000,
+          "inputTokensAtMost": null,
+          "input": 6.5,
+          "output": 29.25,
+          "cachedInput": 0.65
+        }
+      ],
+      "billingExpression": "len <= 272000 ? tier(\"standard\", p * 5 + c * 30 + cr * 0.5) : tier(\"long_context\", p * 10 + c * 45 + cr * 1)"
+    },
+    {
+      "model": "gpt-5.6-luna",
+      "input": 0.13,
+      "output": 0.78,
+      "cachedInput": 0.013000000000000001,
+      "discount": 0.65,
+      "billingMode": "tiered_expr",
+      "tiers": [
+        {
+          "name": "standard",
+          "inputTokensAbove": null,
+          "inputTokensAtMost": 272000,
+          "input": 0.13,
+          "output": 0.78,
+          "cachedInput": 0.013000000000000001
+        },
+        {
+          "name": "long_context",
+          "inputTokensAbove": 272000,
+          "inputTokensAtMost": null,
+          "input": 0.26,
+          "output": 1.1700000000000002,
+          "cachedInput": 0.026000000000000002
+        }
+      ],
+      "billingExpression": "len <= 272000 ? tier(\"standard\", p * 0.2 + c * 1.2 + cr * 0.02) : tier(\"long_context\", p * 0.4 + c * 1.8 + cr * 0.04)"
+    },
+    {
+      "model": "gpt-5.6-sol",
+      "input": 2.6,
+      "output": 13.0,
+      "cachedInput": 0.26,
+      "discount": 0.65,
+      "billingMode": "tiered_expr",
+      "tiers": [
+        {
+          "name": "0_272k",
+          "inputTokensAbove": null,
+          "inputTokensAtMost": 272000,
+          "input": 2.6,
+          "output": 13.0,
+          "cachedInput": 0.26,
+          "cacheWrite": 3.25
+        },
+        {
+          "name": "272k_plus",
+          "inputTokensAbove": 272000,
+          "inputTokensAtMost": null,
+          "input": 5.2,
+          "output": 19.5,
+          "cachedInput": 0.52,
+          "cacheWrite": 6.5
+        }
+      ],
+      "billingExpression": "len <= 272000 ? tier(\"0_272k\", p * 4 + c * 20 + cr * 0.4 + cc * 5) : tier(\"272k_plus\", p * 8 + c * 30 + cr * 0.8 + cc * 10)"
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "input": 1.3,
+      "output": 7.800000000000001,
+      "cachedInput": 0.13,
+      "discount": 0.65,
+      "billingMode": "tiered_expr",
+      "tiers": [
+        {
+          "name": "standard",
+          "inputTokensAbove": null,
+          "inputTokensAtMost": 272000,
+          "input": 1.3,
+          "output": 7.800000000000001,
+          "cachedInput": 0.13
+        },
+        {
+          "name": "long_context",
+          "inputTokensAbove": 272000,
+          "inputTokensAtMost": null,
+          "input": 2.6,
+          "output": 11.700000000000001,
+          "cachedInput": 0.26
+        }
+      ],
+      "billingExpression": "len <= 272000 ? tier(\"standard\", p * 2 + c * 12 + cr * 0.2) : tier(\"long_context\", p * 4 + c * 18 + cr * 0.4)"
+    },
+    {
+      "model": "gpt-6-astra",
+      "input": 6.5,
+      "output": 32.5,
+      "cachedInput": 0.65,
+      "discount": 0.65,
+      "billingMode": "tiered_expr",
+      "tiers": [
+        {
+          "name": "0_272k",
+          "inputTokensAbove": null,
+          "inputTokensAtMost": 272000,
+          "input": 6.5,
+          "cachedInput": 0.65,
+          "cacheWrite": 8.125,
+          "output": 32.5
+        },
+        {
+          "name": "272k_plus",
+          "inputTokensAbove": 272000,
+          "inputTokensAtMost": null,
+          "input": 13.0,
+          "cachedInput": 1.3,
+          "cacheWrite": 16.25,
+          "output": 48.75
+        }
+      ],
+      "billingExpression": "len <= 272000 ? tier(\"0_272k\", p * 10 + cr * 1 + cc * 12.5 + c * 50) : tier(\"272k_plus\", p * 20 + cr * 2 + cc * 25 + c * 75)"
+    },
+    {
+      "model": "gpt-6-luna",
+      "input": 0.065,
+      "output": 0.325,
+      "cachedInput": 0.006500000000000001,
+      "discount": 0.65,
+      "billingMode": "tiered_expr",
+      "tiers": [
+        {
+          "name": "0_272k",
+          "inputTokensAbove": null,
+          "inputTokensAtMost": 272000,
+          "input": 0.065,
+          "cachedInput": 0.006500000000000001,
+          "cacheWrite": 0.08125,
+          "output": 0.325
+        },
+        {
+          "name": "272k_plus",
+          "inputTokensAbove": 272000,
+          "inputTokensAtMost": null,
+          "input": 0.13,
+          "cachedInput": 0.013000000000000001,
+          "cacheWrite": 0.1625,
+          "output": 0.48750000000000004
+        }
+      ],
+      "billingExpression": "len <= 272000 ? tier(\"0_272k\", p * 0.1 + cr * 0.01 + cc * 0.125 + c * 0.5) : tier(\"272k_plus\", p * 0.2 + cr * 0.02 + cc * 0.25 + c * 0.75)"
+    },
+    {
+      "model": "gpt-6-sol",
+      "input": 1.3,
+      "output": 6.5,
+      "cachedInput": 0.13,
+      "discount": 0.65,
+      "billingMode": "tiered_expr",
+      "tiers": [
+        {
+          "name": "0_272k",
+          "inputTokensAbove": null,
+          "inputTokensAtMost": 272000,
+          "input": 1.3,
+          "cachedInput": 0.13,
+          "cacheWrite": 1.625,
+          "output": 6.5
+        },
+        {
+          "name": "272k_plus",
+          "inputTokensAbove": 272000,
+          "inputTokensAtMost": null,
+          "input": 2.6,
+          "cachedInput": 0.26,
+          "cacheWrite": 3.25,
+          "output": 9.75
+        }
+      ],
+      "billingExpression": "len <= 272000 ? tier(\"0_272k\", p * 2 + cr * 0.2 + cc * 2.5 + c * 10) : tier(\"272k_plus\", p * 4 + cr * 0.4 + cc * 5 + c * 15)"
+    },
+    {
+      "model": "gpt-6.1-sol",
+      "input": 2.0,
+      "output": 10.0,
+      "cachedInput": 0.1,
+      "discount": 1,
+      "billingMode": "tiered_expr",
+      "tiers": [
+        {
+          "name": "0_272k",
+          "inputTokensAbove": null,
+          "inputTokensAtMost": 272000,
+          "input": 2.0,
+          "cachedInput": 0.1,
+          "cacheWrite": 2.5,
+          "output": 10.0
+        },
+        {
+          "name": "272k_plus",
+          "inputTokensAbove": 272000,
+          "inputTokensAtMost": null,
+          "input": 4.0,
+          "cachedInput": 0.2,
+          "cacheWrite": 5.0,
+          "output": 15.0
+        }
+      ],
+      "billingExpression": "len <= 272000 ? tier(\"0_272k\", p * 2 + cr * 0.1 + cc * 2.5 + c * 10) : tier(\"272k_plus\", p * 4 + cr * 0.2 + cc * 5 + c * 15)"
+    },
+    {
+      "model": "grok-4-1-fast-reasoning",
+      "input": 0.17,
+      "output": 0.42500000000000004,
+      "cachedInput": 0.0425,
+      "discount": 0.85,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "grok-4-20-non-reasoning",
+      "input": 1.7,
+      "output": 5.1,
+      "cachedInput": 0.272,
+      "discount": 0.85,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "grok-4-20-reasoning",
+      "input": 1.7,
+      "output": 5.1,
+      "cachedInput": 0.272,
+      "discount": 0.85,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "grok-4.3",
+      "input": 1.0625,
+      "output": 2.125,
+      "cachedInput": 0.17,
+      "discount": 0.85,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "kimi-k2-0905-preview",
+      "input": 0.54,
+      "output": 2.2500000000000004,
+      "cachedInput": 0.135,
+      "discount": 0.9,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "kimi-k2.5",
+      "input": 0.6,
+      "output": 3.15,
+      "cachedInput": 0.12,
+      "discount": 1,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "kimi-k2.6",
+      "input": 1.0,
+      "output": 4.0,
+      "cachedInput": null,
+      "discount": 1,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "kimi-k3",
+      "input": 3.0,
+      "output": 15.0,
+      "cachedInput": 0.30000000000000004,
+      "discount": 1,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "o3",
+      "input": 2,
+      "output": 8,
+      "cachedInput": 0.5,
+      "discount": 1,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "qwen-max",
+      "input": 1.6,
+      "output": 6.4,
+      "cachedInput": 0.32000000000000006,
+      "discount": 1,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "qwen-max-longcontext",
+      "input": 0.4,
+      "output": 1.2,
+      "cachedInput": null,
+      "discount": 1,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "qwen-plus",
+      "input": 0.06,
+      "output": 0.23,
+      "cachedInput": 0.006,
+      "discount": 1,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "qwen-turbo",
+      "input": 0.07,
+      "output": 0.21,
+      "cachedInput": 0.014000000000000002,
+      "discount": 1,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "qwen-vl-max-latest",
+      "input": 0.41,
+      "output": 1.64,
+      "cachedInput": null,
+      "discount": 1,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "qwen3-235b-a22b",
+      "input": 0.22,
+      "output": 0.88,
+      "cachedInput": null,
+      "discount": 1,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "qwen3-coder-plus",
+      "input": 1.0,
+      "output": 2.0,
+      "cachedInput": 0.1,
+      "discount": 1,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "qwen3-max",
+      "input": 2.11,
+      "output": 8.43,
+      "cachedInput": 0.211,
+      "discount": 1,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "qwen3-vl-flash",
+      "input": 0.034999999999999996,
+      "output": 0.27999999999999997,
+      "cachedInput": 0.006999999999999999,
+      "discount": 0.7,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "qwen3-vl-plus",
+      "input": 0.1429,
+      "output": 1.4286,
+      "cachedInput": 0.028579999999999998,
+      "discount": 1,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "qwen3.5-flash",
+      "input": 0.029,
+      "output": 0.287,
+      "cachedInput": null,
+      "discount": 1,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "qwen3.5-plus",
+      "input": 0.4,
+      "output": 2.4,
+      "cachedInput": 0.08000000000000002,
+      "discount": 1,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "qwen3.6-plus",
+      "input": 0.3,
+      "output": 1.7999999999999998,
+      "cachedInput": null,
+      "discount": 1,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "qwen3.7-max",
+      "input": 1.2,
+      "output": 1.2,
+      "cachedInput": 0.11999999999999998,
+      "discount": 1,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "qwen3.8-flash",
+      "input": 0.15,
+      "output": 0.47,
+      "cachedInput": 0.016,
+      "discount": 1,
+      "billingMode": "tiered_expr",
+      "tiers": [
+        {
+          "name": "standard",
+          "inputTokensAbove": null,
+          "inputTokensAtMost": null,
+          "input": 0.15,
+          "cachedInput": 0.016,
+          "cacheWrite": 0.2,
+          "output": 0.47
+        }
+      ],
+      "billingExpression": "tier(\"standard\", p * 0.15 + cr * 0.016 + cc * 0.2 + c * 0.47)"
+    },
+    {
+      "model": "qwen3.8-max",
+      "input": 2.0,
+      "output": 6.0,
+      "cachedInput": 0.25,
+      "discount": 1,
+      "billingMode": "tiered_expr",
+      "tiers": [
+        {
+          "name": "standard",
+          "inputTokensAbove": null,
+          "inputTokensAtMost": null,
+          "input": 2.0,
+          "cachedInput": 0.25,
+          "cacheWrite": 2.5,
+          "output": 6.0
+        }
+      ],
+      "billingExpression": "tier(\"standard\", p * 2 + cr * 0.25 + cc * 2.5 + c * 6)"
+    },
+    {
+      "model": "qwen3.8-omni-flash",
+      "input": 0.15,
+      "output": 0.47,
+      "cachedInput": 0.016,
+      "discount": 1,
+      "billingMode": "tiered_expr",
+      "tiers": [
+        {
+          "name": "standard",
+          "inputTokensAbove": null,
+          "inputTokensAtMost": null,
+          "input": 0.15,
+          "cachedInput": 0.016,
+          "output": 0.47
+        }
+      ],
+      "billingExpression": "tier(\"standard\", p * 0.15 + cr * 0.016 + c * 0.47)"
+    },
+    {
+      "model": "qwq-32b",
+      "input": 0.9,
+      "output": 2.7,
+      "cachedInput": null,
+      "discount": 1,
+      "billingMode": "ratio",
+      "tiers": []
+    },
+    {
+      "model": "youtu-vita",
+      "input": 0.162,
+      "output": 0.486,
+      "cachedInput": null,
+      "discount": 0.9,
+      "billingMode": "ratio",
+      "tiers": []
+    }
+  ]
+}

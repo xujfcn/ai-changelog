@@ -120,7 +120,7 @@ export function formatPriceUnit(pricing: ModelPricing): string {
 }
 
 export function formatDate(dateStr: string, locale: Locale = defaultLocale): string {
-  const localeCode = locale === "zh" ? "zh-CN" : locale === "ja" ? "ja-JP" : locale === "ru" ? "ru-RU" : "en-US";
+  const localeCode = ({ en: "en-US", zh: "zh-CN", ja: "ja-JP", ru: "ru-RU", ko: "ko-KR", pt: "pt-BR" })[locale];
   return new Date(dateStr).toLocaleDateString(localeCode, {
     year: "numeric",
     month: "short",

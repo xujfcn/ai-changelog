@@ -22,11 +22,11 @@ export const metadata: Metadata = {
     "openai updates",
     "anthropic updates",
   ],
-  metadataBase: new URL("https://aichangelog.com"),
+  metadataBase: new URL("https://aichangelog.dev"),
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://aichangelog.com",
+    url: "https://aichangelog.dev",
     title: "AI Model Changelog — Track every AI model update in one place",
     description:
       "Track version history, updates, deprecations, and pricing changes for all major AI models.",
