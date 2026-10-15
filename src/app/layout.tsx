@@ -1,3 +1,4 @@
+import SiteAnalytics from "@/components/SiteAnalytics";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Script from "next/script";
@@ -69,6 +70,7 @@ export default function RootLayout({
           data-website-id="85911674-04ec-4b92-9716-ab1dc311c39e"
           strategy="afterInteractive"
         />
+        <SiteAnalytics site="aichangelog" />
         {children}
       </body>
     </html>

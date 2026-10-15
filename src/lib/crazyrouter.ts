@@ -10,7 +10,7 @@ export function apiModel(id: string): ApiModel | undefined {
 
 export function crazyrouterLink(locale: Locale, path: string, campaign: string, placement: string): string {
   const url = new URL(path, "https://crazyrouter.com");
-  url.search = new URLSearchParams({ utm_source: "aichangelog", utm_medium: placement.startsWith("footer") ? "footer" : campaign === "cta" ? "homepage" : "model", utm_campaign: campaign, utm_content: `${campaign}__${locale}__${placement}` }).toString();
+  url.search = new URLSearchParams({ utm_source: "aichangelog", utm_medium: "referral", utm_campaign: campaign, utm_content: `${campaign}__${locale}__${placement}` }).toString();
   return url.toString();
 }
 
